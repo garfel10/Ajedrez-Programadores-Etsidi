@@ -2,13 +2,13 @@
 
 void casillas::tablero (){
 
-	int n = 0;
+	int n = 1;
 	int i = 1;
 	int j = 1;
-	casillas casilla[64];
+	casillas casilla[65];
 
 
-	while(n<64) {
+	while(n<65) {
 
 
 		casilla[n].x = i;
