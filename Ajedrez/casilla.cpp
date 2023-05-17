@@ -1,18 +1,20 @@
 #include "casilla.h"
 
-void casillas::tablero (){
+casillas casilla[65];
+
+void casillas::casillero (){
 
 	int n = 1;
 	int i = 1;
 	int j = 1;
-	casillas casilla[65];
+	
 
 
 	while(n<65) {
 
 
-		casilla[n].x = i;
-		casilla[n].y = j;
+		casilla[n].c = i;
+		casilla[n].f = j;
 
 		if (i % 2 == j % 2) casilla[n].color = 'b';
 		else casilla[n].color = 'w';
@@ -25,6 +27,29 @@ void casillas::tablero (){
 			}
 		
 	}
+	//se genera un vector que recorre el tablero por filas, de izquierda a derecha y de abajo a arriba.
+
+}
+
+void casillas::centros() {
+	
+	int c = 1;
+
+	while (c < 65) {
+
+		//limites en x: LOS ESTABLEZCO DIRECTAMENTE DEL TABLERO DE LUCIA
+		casilla[c].limx1 = (0.5 + casilla[c].c);//+0.5 pq he decidido empezar por 1 en vez de 0
+		casilla[c].limx2 = (1 + casilla[c].limx1);//realmente no lo utilizo
+
+		//limites en y: lo mismo que arriba
+		casilla[c].limy1 = (0.5 + casilla[c].f);
+		casilla[c].limy2 = (1 + casilla[c].limy1);
+
+		casilla[c].centrox = 0.5 + casilla[c].limx1;
+		casilla[c].centroy = casilla[c].centrox;//es un cuadrado que empieza en el punto (1.5,1.5), los centros tienen la misma x que y
+
+	}
+
 
 
 }
