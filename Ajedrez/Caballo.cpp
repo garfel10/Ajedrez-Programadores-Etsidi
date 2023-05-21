@@ -1,6 +1,6 @@
 #include "Caballo.h"
 .
-void Peon::dibujar() {
+void Caballo::dibujar() {
 	if (Color == 1) {
 		ETSIDI::getTexture("bin/imagenes/Caballo Blanco");
 	}
