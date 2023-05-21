@@ -1,8 +1,10 @@
 #pragma once
 #include "Nombrefichas.h"
+#include "lib/ETSIDI.h"
+
 class Fichas
 {
-private:
+protected:
 	Nombrefichas Tipo;
 	int Fila, Columna;
 	bool Color;
@@ -14,5 +16,6 @@ public:
 	int getFila();
 	int getColumna();
 	bool restricciones(int, int, int, int, Nombrefichas);
+	void dibujar();
 };
 

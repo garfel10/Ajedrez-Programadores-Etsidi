@@ -1,4 +1,5 @@
 #include "Fichas.h"
+#include "lib/ETSIDI.h"
 
 Fichas::Fichas(Nombrefichas tipo, int fila, int columna, bool color) {
 	tipo = Tipo;
@@ -70,4 +71,8 @@ bool Fichas::restricciones(int nueva_fila, int nueva_columna,int fila_actual, in
 		else return 0;
 		break;
 	}
+}
+
+void Fichas::dibujar() {
+	
 }
