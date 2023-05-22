@@ -67,12 +67,12 @@ int jaque(int bando, int xatacante, int yatacante ) { //comprueba si el rey est√
 						if (yatacante < yrey) //si est√° debajo del rey, comprobamos las casillas que tiene encima una a una
 						{
 							for (int i = 1; (yatacante + i) < yrey; i++)
+							{
 								bloqueo = amenaza(xatacante, yatacante + i, bandoatacante);
-							if (bloqueo == true)
-								return 1;
-							
+								if (bloqueo == true)
+									return 1;
+							}
 						}
-
 						if (yatacante > yrey)  //si est√° encima del rey, comprobamos las casillas que tiene debajo una a una
 						{
 							for (int i = 1; (yatacante - i) > yrey; i++)
@@ -93,7 +93,7 @@ int jaque(int bando, int xatacante, int yatacante ) { //comprueba si el rey est√
 								{
 									bloqueo = amenaza(xatacante + i, yatacante, bandoatacante);
 									if (bloqueo == true)
-									return 1;
+										return 1;
 								]
 							}
 							if (xatacante > xrey) //si est√° a la derecha del rey, comprobamos las casillas en el camino una a una
@@ -102,7 +102,7 @@ int jaque(int bando, int xatacante, int yatacante ) { //comprueba si el rey est√
 								{
 									bloqueo = amenaza(xatacante - i, yatacante, bandoatacante);
 									if (bloqueo == true)
-									return 1;
+										return 1;
 								}
 							}
 							return 2; //si ninguna de las iteraciones ha encontrado un bloqueo para el ataque, es jaque mate
@@ -117,8 +117,8 @@ int jaque(int bando, int xatacante, int yatacante ) { //comprueba si el rey est√
 						for (int i = 1; (yatacante + i) < yrey; i++)
 						{
 							bloqueo = amenaza(xatacante + i, yatacante + i, bandoatacante);
-						if (bloqueo == true)
-						return 1;
+							if (bloqueo == true)
+								return 1;
 						}
 					}
 					if ((xatacante - xrey > 0) && (yatacante - yrey < 0)) //abajo a la derecha del rey
@@ -126,8 +126,8 @@ int jaque(int bando, int xatacante, int yatacante ) { //comprueba si el rey est√
 						for (int i = 1; (yatacante + i) < yrey; i++)
 						{
 							bloqueo = amenaza(xatacante - i, yatacante + i, bandoatacante);
-						if (bloqueo == true)
-						return 1;
+							if (bloqueo == true)
+								return 1;
 						}
 					}
 					if ((xatacante - xrey < 0) && (yatacante - yrey > 0)) //arriba a la izquierda del rey
@@ -135,8 +135,8 @@ int jaque(int bando, int xatacante, int yatacante ) { //comprueba si el rey est√
 						for (int i = 1; (yatacante - i) > yrey; i++)
 						{
 							bloqueo = amenaza(xatacante + i, yatacante - i, bandoatacante);
-						if (bloqueo == true)
-						return 1;
+							if (bloqueo == true)
+								return 1;
 						}
 					}
 					if ((xatacante - xrey > 0) && (yatacante - yrey > 0)) //arriba a la derecha del rey
@@ -144,8 +144,8 @@ int jaque(int bando, int xatacante, int yatacante ) { //comprueba si el rey est√
 						for (int i = 1; (yatacante + i) < yrey; i++)
 						{
 							bloqueo = amenaza(xatacante - i, yatacante - i, bandoatacante);
-						if (bloqueo == true)
-						return 1;
+							if (bloqueo == true)
+								return 1;
 						}
 					}
 						return 2; //si no se puede bloquear la trayectoria de la amenaza, es jaque mate
@@ -159,8 +159,8 @@ int jaque(int bando, int xatacante, int yatacante ) { //comprueba si el rey est√
 							for (int i = 1; (yatacante + i) < yrey; i++)
 							{
 								bloqueo = amenaza(xatacante, yatacante + i, bandoatacante);
-							if (bloqueo == true)
-							return 1;
+								if (bloqueo == true)
+									return 1;
 							}
 						}
 
@@ -170,7 +170,7 @@ int jaque(int bando, int xatacante, int yatacante ) { //comprueba si el rey est√
 							{
 								bloqueo = amenaza(xatacante, yatacante - i, bandoatacante);
 								if (bloqueo == true)
-								return 1;
+									return 1;
 							}
 						}
 						return 2; //si no ha conseguido bloquearlo, es jaque mate
