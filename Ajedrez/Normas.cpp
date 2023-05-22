@@ -194,6 +194,7 @@ int jaque(int bando, int xatacante, int yatacante ) { //comprueba si el rey est√
 								if (bloqueo == true)
 									return 1;
 							}
+						return 2; //no puede bloquarlo, as√≠ que es jaque mate
 						}
 					}
 					if ((xatacante - xrey < 0) && (yatacante - yrey < 0)) //abajo a la izquierda del rey
