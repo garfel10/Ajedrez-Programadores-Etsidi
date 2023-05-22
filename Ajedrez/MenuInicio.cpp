@@ -27,41 +27,44 @@ MenuInicio::~MenuInicio() {
 }
 
 void MenuInicio::tecla(unsigned char key) {
-	if (estado == START)
-	{
+	switch (estado) {
+	case START:
 		if (key == 32) {
 			tiempo = 0;
-			estado = MENUINICIO;//MENU PRINCIPAL
+			estado = MENUINICIO;
 		}
-	}
-	if (estado == MENUINICIO) {
-		if (key == 'i' || key == 'I') {
+		break;
+	case MENUINICIO:
+		switch (key) {
+		case  (key == 'i' || key == 'I'):
 			tiempo = 0;
-			estado = INFO;//INSTRUCCIONES AJEDREZ
-		}
-		if (key == 13) {
+			estado = INFO;
+			break;
+		case 13:
 			tiempo = 0;
-			estado = MENU;//PULSE ENTER PARA COMENZAR LA PARTIDA
+			estado = MENU;
+			break;
 		}
-	}
-	if (estado == INFO){
+		break;
+	case INFO:
 		if (key == 'b' || key == 'B') {
 			tiempo = 0;
 			estado = MENUINICIO;//VOLVER AL MENU
 		}
 		if (key == 'm' || key == 'M') {
 			tiempo = 0;
-			//estado = ;//CONSULTAR LOS MOVIMIENTOS DE LAS PIEZAS
+			//estado = ;
 		}
-	}
-	if (estado == MENU) {
+		break;
+	case MENU: 
 		if (key == 's' || key == 'S')
 		{
 			tiempo = 0;
 			estado = PLAY;
 		}
 		if (key == 'e' || key == 'E')
-			exit(0); 
+			exit(0);
+		break;
 	}
 }
 
