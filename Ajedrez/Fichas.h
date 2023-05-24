@@ -15,7 +15,7 @@ public:
 	Nombrefichas getFicha();
 	int getFila();
 	int getColumna();
-	bool restricciones(int, int, int, int, Nombrefichas);
+	virtual bool restricciones(int, int, int, int){}
 	void dibujar();
 };
 
