@@ -15,7 +15,8 @@ void casillas::casillero (){
 
 		casilla[n].c = i;
 		casilla[n].f = j;
-
+		casilla[n].numero = n;
+		
 		if (i % 2 == j % 2) casilla[n].color = 'b';
 		else casilla[n].color = 'w';
 
