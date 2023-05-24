@@ -53,3 +53,17 @@ void casillas::centros() {
 
 
 }
+
+void casillas::vaciar(int n) {
+
+	casilla[n].estado = 0;
+	casilla[n].ficha = '0';
+
+}
+
+void casillas::ocupar(int n, char pieza) {
+
+	casilla[n].estado = 1;
+	casilla[n].ficha = pieza;
+
+}
