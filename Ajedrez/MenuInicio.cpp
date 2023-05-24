@@ -11,57 +11,75 @@ MenuInicio::MenuInicio() {
 	audio = true;
 
 	menuini->setSize(35.0, 35.0);
-	menuini->setPos(0.0, 8.0);
-	
+	menuini->setPos(0.0, 7.0);
+
 	info->setSize(35.0, 35.0);
 	info->setPos(0.0, 6.0);	
 
 	ins->setSize(35.0, 35.0);
 	ins->setPos(0.0, 7.0);
 
+	mov->setSize(35.0, 35.0);
+	mov->setPos(0.0, 7.0);
+
 	menu->setSize(35.0, 35.0);
-	menu->setPos(0.0, 6.0);	
+	menu->setPos(0.0, 6.0);
 }
 
 MenuInicio::~MenuInicio() {
 }
 
 void MenuInicio::tecla(unsigned char key) {
-	if (estado == START)
-	{
+
+	switch (estado) {
+	case START:
 		if (key == 32) {
 			tiempo = 0;
-			estado = MENUINICIO;//MENU PRINCIPAL
+			estado = MENUINICIO;
 		}
-	}
-	if (estado == MENUINICIO) {
+		break;
+	case MENUINICIO:
 		if (key == 'i' || key == 'I') {
 			tiempo = 0;
-			estado = INFO;//INSTRUCCIONES AJEDREZ
+			estado = INFO;
+		}
+		if (key == 'm' || key == 'M') {
+			tiempo = 0;
+			estado = MOVPZS;
 		}
 		if (key == 13) {
 			tiempo = 0;
-			estado = MENU;//PULSE ENTER PARA COMENZAR LA PARTIDA
+			estado = MENU;
 		}
-	}
-	if (estado == INFO){
+		break;
+	case INFO:
 		if (key == 'b' || key == 'B') {
 			tiempo = 0;
 			estado = MENUINICIO;//VOLVER AL MENU
 		}
-		if (key == 'm' || key == 'M') {
+		break;
+	case MOVPZS:
+		if (key == 'b' || key == 'B') {
 			tiempo = 0;
-			//estado = ;//CONSULTAR LOS MOVIMIENTOS DE LAS PIEZAS
+			estado = MENUINICIO;//VOLVER AL MENU
 		}
-	}
-	if (estado == MENU) {
+		break;
+	case MENU: 
 		if (key == 's' || key == 'S')
 		{
 			tiempo = 0;
 			estado = PLAY;
 		}
 		if (key == 'e' || key == 'E')
-			exit(0); 
+			exit(0);
+		break;
+	case PLAY:
+		if (key == 'c' || key == 'C') {
+			estado = MENUINICIO;//VOLVER AL MENU
+		}
+		if (key == 'e' || key == 'E')
+			exit(0);
+		break;
 	}
 }
 
@@ -89,6 +107,13 @@ void MenuInicio::dibuja() {
 			0.0, 1.0, 0.0);
 
 		ins->draw();
+	}
+	else if (estado == MOVPZS) {
+		gluLookAt(0, 6.5, 30,
+			0.0, 6.5, 0.0,
+			0.0, 1.0, 0.0);
+
+		mov->draw();
 	}
 	else if (estado == MENU) {
 		gluLookAt(0, 6.5, 30,

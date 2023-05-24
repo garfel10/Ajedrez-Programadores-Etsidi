@@ -15,7 +15,8 @@ void casillas::casillero (){
 
 		casilla[n].c = i;
 		casilla[n].f = j;
-
+		casilla[n].numero = n;
+		
 		if (i % 2 == j % 2) casilla[n].color = 'b';
 		else casilla[n].color = 'w';
 
@@ -51,5 +52,19 @@ void casillas::centros() {
 	}
 
 
+
+}
+
+void casillas::vaciar(int n) {
+
+	casilla[n].estado = 0;
+	casilla[n].ficha = '0';
+
+}
+
+void casillas::ocupar(int n, char pieza) {
+
+	casilla[n].estado = 1;
+	casilla[n].ficha = pieza;
 
 }
