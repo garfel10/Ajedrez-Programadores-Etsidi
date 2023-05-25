@@ -15,6 +15,7 @@ public:
 	unsigned char fcolor;//b black , w white. el color de la ficha se lo pasa la propia ficha. 
 	int bando;//como fcolor, pero mas facil de manejar en las funciones de la logica del juego
 	char ficha;//alfil:'A', torre 'T', caballo 'C', peon 'P', rey'K', reina 'Q', nulo '0'
+	Nombrefichas ficha;//nueva para logica
 	int numero;//la n
 
 
