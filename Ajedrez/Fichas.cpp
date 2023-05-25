@@ -21,8 +21,8 @@ Fichas::Fichas(Nombrefichas tipo, int fila, int columna, bool color) {
 void Fichas::movimiento() {
 
 	int filaini=0, columnaini=0;
-
-	while (filaini > 8 || columnaini > 8 || filaini < 0 || columnaini < 0) {
+	
+	 do{
 		cout << "Introduzca la fila y columna de la ficha que quiere mover: ";
 		cin >> filaini >> columnaini;
 		if (filaini > 8 || columnaini > 8 || filaini < 0 || columnaini < 0)
@@ -39,16 +39,17 @@ void Fichas::movimiento() {
 			}
 		}
 		
-	} //Así nos aseguramos que las coordenadas introducidas son correctas, están dentro del tablero y hay una ficha en dicha casilla
+	 } while (filaini > 8 || columnaini > 8 || filaini < 0 || columnaini < 0 || casilla[filaini][columnaini].estado == 0); 
+	 //Así nos aseguramos que las coordenadas introducidas son correctas, están dentro del tablero y hay una ficha en dicha casilla
 
 	
 
-	int filafin, columnafin;
+	int filafin=0, columnafin=0;
 
-	while (filafin > 8 || columnafin > 8 || filafin < 0 || columnafin < 0) {
+	 do{
 		cout << "Introduzca la fila y columna a donde quiere mover la ficha: ";
 		cin >> filafin >> columnafin;
-	} //Así nos aseguramos que las coordenadas introducidas son correctas y están dentro del tablero
+	 } while (filafin > 8 || columnafin > 8 || filafin < 0 || columnafin < 0); //Así nos aseguramos que las coordenadas introducidas son correctas y están dentro del tablero
 	
 
 	switch (casilla[filaini][columnaini].ficha) {
