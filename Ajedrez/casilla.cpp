@@ -12,7 +12,7 @@ void casillas::casillero() {
 
 	while (n < 65) {
 
-
+		//la i es la fila y la j la columna: casilla[fila][columna]
 		casilla[i][j].f = i;
 		casilla[i][j].c = j;
 		casilla[i][j].numero = n;
