@@ -28,12 +28,11 @@ void casillas::casillero() {
 
 
 		n++;
-		if (i < 8) i++;
+		if (j < 8) j++;
 		else {
-			i = 1;
-			j++;
+			j = 1;
+			i++;
 		}
-
 	}
 	//se fora una matriz [filas(8)][columnas(8)] que recorre cada fila de izquierda a derecha (1-8) y  cuando acaba con la fila pasa a la fila superior.
 
