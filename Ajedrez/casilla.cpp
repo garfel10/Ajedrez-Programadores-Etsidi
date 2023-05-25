@@ -45,14 +45,16 @@ void casillas::vaciar(int fila, int columna) {
 
 	casilla[fila][columna].estado = 0;
 	casilla[fila][columna].ficha.setFicha(Nombrefichas::VACIO);
-
+	casilla[fila][columna].ficha.borrarcontenido();
 
 }
 
 void casillas::ocupar(int fila, int columna, Nombrefichas pieza, char colorficha) {
 
 	casilla[fila][columna].estado = 1;
-	casilla[fila][columna].ficha.setFicha(pieza);
 	casilla[fila][columna].fcolor = colorficha;
+	casilla[fila][columna].ficha.setFicha(pieza);
+	casilla[fila][columna].ficha.setPos(fila, columna);
+	casilla[fila][columna].ficha.Color = colorficha;
 
 }

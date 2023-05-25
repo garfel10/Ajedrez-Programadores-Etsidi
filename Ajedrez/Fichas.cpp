@@ -10,11 +10,11 @@
 #include <iostream>
 using namespace std;
 
-Fichas::Fichas(Nombrefichas tipo, int fila, int columna, bool color) {
+Fichas::Fichas(Nombrefichas tipo, int fila, int columna, char color) {
 	tipo = Tipo;
 	fila = Fila;
 	columna = Columna;
-	color = Color; //1 para blanco 0 para negro
+	color = Color;
 }
 
 void Fichas::movimiento() {
@@ -53,38 +53,56 @@ void Fichas::movimiento() {
 
 	switch (casilla[filaini][columnaini].ficha.getFicha()) {
 	case Nombrefichas::ALFIL:
-		if (alfil.restricciones(filafin, columnafin, filaini, columnaini))
-			alfil.setPos(filafin, columnafin);
+		if (alfil.restricciones(filafin, columnafin, filaini, columnaini)) {
+			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::ALFIL, casilla[filaini][columnaini].fcolor);
+			//alfil.setPos(filafin, columnafin);
+			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+		}	
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case Nombrefichas::TORRE:
-		if (torre.restricciones(filafin, columnafin, filaini, columnaini))
-			torre.setPos(filafin, columnafin);
+		if (torre.restricciones(filafin, columnafin, filaini, columnaini)){
+			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::TORRE, casilla[filaini][columnaini].fcolor);
+			//torre.setPos(filafin, columnafin);
+			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case Nombrefichas::CABALLO:
-		if (caballo.restricciones(filafin, columnafin, filaini, columnaini))
-			caballo.setPos(filafin, columnafin);
+		if (caballo.restricciones(filafin, columnafin, filaini, columnaini)) {
+			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::CABALLO, casilla[filaini][columnaini].fcolor);
+			//caballo.setPos(filafin, columnafin);
+			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case Nombrefichas::PEON:
-		if (peon.restricciones(filafin, columnafin, filaini, columnaini))
-			peon.setPos(filafin, columnafin);
+		if (peon.restricciones(filafin, columnafin, filaini, columnaini)) {
+			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::PEON, casilla[filaini][columnaini].fcolor);
+			//peon.setPos(filafin, columnafin);
+			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case Nombrefichas::REY:
-		if (rey.restricciones(filafin, columnafin, filaini, columnaini))
-			rey.setPos(filafin, columnafin);
+		if (rey.restricciones(filafin, columnafin, filaini, columnaini)) {
+			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::REY, casilla[filaini][columnaini].fcolor);
+			//rey.setPos(filafin, columnafin);
+			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case Nombrefichas::REINA:
-		if (reina.restricciones(filafin, columnafin, filaini, columnaini))
-			reina.setPos(filafin, columnafin);
+		if (reina.restricciones(filafin, columnafin, filaini, columnaini)) {
+			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::REINA, casilla[filaini][columnaini].fcolor);
+			//reina.setPos(filafin, columnafin);
+			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+		}
 		else
 			cout << "Movimiento no permitido";
 		break;
@@ -116,4 +134,9 @@ void Fichas::setPos(int fila, int columna) {
 
 void Fichas::dibujar() {
 	
+}
+
+void Fichas::borrarcontenido() {
+	setPos(30,30);
+	Color = '\0';
 }

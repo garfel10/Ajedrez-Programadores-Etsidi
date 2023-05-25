@@ -9,11 +9,11 @@ class Fichas
 protected:
 	Nombrefichas Tipo;
 	int Fila, Columna;
-	bool Color;
+	char Color;
 	Sprite* imagen;
 
 public:
-	Fichas(Nombrefichas tipo, int fila, int columna, bool color);
+	Fichas(Nombrefichas tipo, int fila, int columna, char color);
 	void movimiento();
 	void setPos(int fila2, int columna2);
 	Nombrefichas getFicha();
@@ -22,6 +22,7 @@ public:
 	int getColumna();
 	virtual bool restricciones(int, int, int, int){}
 	void dibujar();
+	void borrarcontenido();
 	friend class casillas;
 };
 
