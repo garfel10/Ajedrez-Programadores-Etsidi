@@ -52,38 +52,38 @@ void Fichas::movimiento() {
 	 } while (filafin > 8 || columnafin > 8 || filafin < 0 || columnafin < 0); //Así nos aseguramos que las coordenadas introducidas son correctas y están dentro del tablero
 	
 
-	switch (casilla[filaini][columnaini].ficha) {
-	case 'A':
+	switch (casilla[filaini][columnaini].tipoficha) {
+	case Nombrefichas::ALFIL:
 		if (alfil.restricciones(filafin, columnafin, filaini, columnaini))
 			alfil.setPos(filafin, columnafin);
 		else
 			cout << "Movimiento no permitido";
 		break;
-	case 'T':
+	case Nombrefichas::TORRE:
 		if (torre.restricciones(filafin, columnafin, filaini, columnaini))
 			torre.setPos(filafin, columnafin);
 		else
 			cout << "Movimiento no permitido";
 		break;
-	case 'C':
+	case Nombrefichas::CABALLO:
 		if (caballo.restricciones(filafin, columnafin, filaini, columnaini))
 			caballo.setPos(filafin, columnafin);
 		else
 			cout << "Movimiento no permitido";
 		break;
-	case'P':
+	case Nombrefichas::PEON:
 		if (peon.restricciones(filafin, columnafin, filaini, columnaini))
 			peon.setPos(filafin, columnafin);
 		else
 			cout << "Movimiento no permitido";
 		break;
-	case 'K':
+	case Nombrefichas::REY:
 		if (rey.restricciones(filafin, columnafin, filaini, columnaini))
 			rey.setPos(filafin, columnafin);
 		else
 			cout << "Movimiento no permitido";
 		break;
-	case 'Q':
+	case Nombrefichas::REINA:
 		if (reina.restricciones(filafin, columnafin, filaini, columnaini))
 			reina.setPos(filafin, columnafin);
 		else
