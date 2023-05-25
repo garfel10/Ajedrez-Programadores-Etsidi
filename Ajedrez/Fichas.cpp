@@ -9,7 +9,6 @@
 #include"Reina.h"*/
 #include <iostream>
 using namespace std;
-Alfil alfil;
 
 Fichas::Fichas(Nombrefichas tipo, int fila, int columna, bool color) {
 	tipo = Tipo;
