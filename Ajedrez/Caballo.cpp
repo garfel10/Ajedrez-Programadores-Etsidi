@@ -2,10 +2,10 @@
 
 void Caballo::dibujar() {
 	if (Color == 1) {
-		ETSIDI::getTexture("bin/imagenes/Caballo Blanco");
+		imagen = new Sprite("bin/imagenes/Caballo Blanco", posicion.centrox, posicion.centroy, 1, 1);
 	}
 	if (Color == 0) {
-		ETSIDI::getTexture("bin/imagenes/Caballo Negro");
+		imagen = new Sprite("bin/imagenes/Caballo Negro", posicion.centrox, posicion.centroy, 1, 1);
 	}
 }
 

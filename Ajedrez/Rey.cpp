@@ -2,10 +2,10 @@
 
 void Rey::dibujar() {
 	if (Color == 1) {
-		ETSIDI::getTexture("bin/imagenes/Rey Blanco");
+		imagen = new Sprite("bin/imagenes/Rey Blanco", posicion.centrox, posicion.centroy, 1, 1);
 	}
 	if (Color == 0) {
-		ETSIDI::getTexture("bin/imagenes/Rey Negro");
+		imagen = new Sprite("bin/imagenes/Rey Negro", posicion.centrox, posicion.centroy, 1, 1);
 	}
 }
 

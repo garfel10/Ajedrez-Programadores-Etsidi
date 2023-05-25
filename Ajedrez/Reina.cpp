@@ -2,10 +2,10 @@
 
 void Reina::dibujar() {
 	if (Color == 1) {
-		ETSIDI::getTexture("bin/imagenes/Reina Blanco");
+		imagen = new Sprite("bin/imagenes/Reina Blanco", posicion.centrox, posicion.centroy, 1, 1);
 	}
 	if (Color == 0) {
-		ETSIDI::getTexture("bin/imagenes/Reina Negro");
+		imagen = new Sprite("bin/imagenes/Reina Negro", posicion.centrox, posicion.centroy, 1, 1);
 	}
 }
 

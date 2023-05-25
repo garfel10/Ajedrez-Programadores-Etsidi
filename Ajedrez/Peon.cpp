@@ -2,10 +2,10 @@
 
 void Peon::dibujar() {
 	if (Color == 1) {
-		ETSIDI::getTexture("bin/imagenes/Peon Blanco");
+		imagen = new Sprite("bin/imagenes/Peon Blanco", posicion.centrox, posicion.centroy, 1, 1);
 	}
 	if (Color == 0) {
-		ETSIDI::getTexture("bin/imagenes/Peon Negro");
+		imagen = new Sprite("bin/imagenes/Peon Negro", posicion.centrox, posicion.centroy, 1, 1);
 	}
 }
 

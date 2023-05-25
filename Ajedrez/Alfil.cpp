@@ -2,10 +2,10 @@
 
 void Alfil::dibujar() {
 	if (Color == 1) {
-		ETSIDI::getTexture("bin/imagenes/Alfil Blanco");
+		imagen = new Sprite("bin/imagenes/Alfil Blanco", posicion.centrox, posicion.centroy, 1, 1);
 	}
 	if (Color == 0) {
-		ETSIDI::getTexture("bin/imagenes/Alfil Negro");
+		imagen = new Sprite("bin/imagenes/Alfil Negro", posicion.centrox, posicion.centroy, 1, 1);
 	}
 }
 

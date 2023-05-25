@@ -2,10 +2,10 @@
 
 void Torre::dibujar() {
 	if (Color == 1) {
-		ETSIDI::getTexture("bin/imagenes/Torre Blanco");
+		imagen = new Sprite("bin/imagenes/Torre Blanco", posicion.centrox, posicion.centroy, 1, 1);
 	}
 	if (Color == 0) {
-		ETSIDI::getTexture("bin/imagenes/Torre Negro");
+		imagen = new Sprite("bin/imagenes/Torre Negro", posicion.centrox, posicion.centroy, 1, 1);
 	}
 }
 
