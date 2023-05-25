@@ -127,11 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="casilla.h" />
     <ClInclude Include="Fichas.h" />
+    <ClInclude Include="juego.h" />
     <ClInclude Include="Nombrefichas.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="casilla.cpp" />
     <ClCompile Include="Fichas.cpp" />
+    <ClCompile Include="juego.cpp" />
+    <ClCompile Include="Normas.cpp" />
+    <ClCompile Include="turnos.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

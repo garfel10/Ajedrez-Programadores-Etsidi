@@ -51,7 +51,7 @@ void Fichas::movimiento() {
 	 } while (filafin > 8 || columnafin > 8 || filafin < 0 || columnafin < 0); //Así nos aseguramos que las coordenadas introducidas son correctas y están dentro del tablero
 	
 
-	switch (casilla[filaini][columnaini].ficha) {
+	switch (casilla[filaini][columnaini].ficha.getFicha()) {
 	case Nombrefichas::ALFIL:
 		if (alfil.restricciones(filafin, columnafin, filaini, columnaini))
 			alfil.setPos(filafin, columnafin);
@@ -103,6 +103,10 @@ int Fichas::getColumna() {
 }
 Nombrefichas Fichas::getFicha() {
 	return Tipo;
+}
+void Fichas::setFicha(Nombrefichas ficha)
+{
+	Tipo = ficha;
 }
 
 void Fichas::setPos(int fila, int columna) {

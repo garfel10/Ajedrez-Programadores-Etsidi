@@ -1,11 +1,12 @@
 #pragma once
-#include "Nombrefichas.h"
+#include "Fichas.h"
 class casillas
 {
 public:
 
 	bool amenazablanca;
 	bool amenazanegra;
+	bool clavada;
 	int c; //COLUMNA (1-8)
 	int f; //FILA (1-8)
 	unsigned char color;//b black, w white
@@ -13,9 +14,9 @@ public:
 	int estado = 0; // 1 ocupada, 0 libre. Lo inicializamos a 0 y cuando se inicialicen las fichas ya se ponen a 1 las que se tienen que poner.
 	//las casillas ocupadas seran de la 1 a la 16 y de la 48 a la 
 	unsigned char fcolor;//b black , w white. el color de la ficha se lo pasa la propia ficha. 
-	int bando;//como fcolor, pero mas facil de manejar en las funciones de la logica del juego
-	char ficha;//alfil:'A', torre 'T', caballo 'C', peon 'P', rey'K', reina 'Q', nulo '0'
-	Nombrefichas ficha;//nueva para logica
+	int bando;//como fcolor, pero mas facil de manejar en las funciones de la logica del juego, 1 es blanco, 0 es negro, 2 es vacio
+	//char ficha;//alfil:'A', torre 'T', caballo 'C', peon 'P', rey'K', reina 'Q', nulo '0'
+	Fichas ficha;//nueva para logica
 	int numero;//la n
 
 
@@ -26,7 +27,7 @@ public:
 	
 	//las funciones que utilizaran las fichas cuando "lleguen" o se "vayan"
 	void vaciar(int fila, int columna);
-	void ocupar(int fila, int columna, char pieza, char colorficha);
+	void ocupar(int fila, int columna, Nombrefichas pieza, char colorficha);
 
 
 
@@ -34,3 +35,4 @@ public:
 
 
 };
+casillas casilla[9][9];

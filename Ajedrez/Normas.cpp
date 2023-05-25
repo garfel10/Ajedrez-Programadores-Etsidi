@@ -7,6 +7,7 @@
 int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando ) { //comprueba si el rey está en jaque, y si lo está, comprueba si está en jaque mate
 	//datos de prueba, luego serán sustituidos por los equivalentes en la clase tablero
 	int xrey, yrey;
+	int entry = 0;//entrada a switch case
 	Nombrefichas atacante=tablero[yatacante][xatacante].ficha;// miramos que tipo de ficha es la que ataca, creo que esto esta mal planteado, habra que tener de input a la funcion la ficha atacante directamente
 	int bandoatacante;
 	if (bando = 1)
@@ -40,8 +41,26 @@ int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando ) { //
 		else
 		{
 			//esto significa que no podemos comernos al atacante, por lo que la única opción que queda es bloquear su camino, cosa que solo se puede si es una Reina, una Torre o un Alfil
+			if (tablero[yatacante][xatacante].ficha.getFicha() == Nombrefichas::PEON)
+				entry = 1;
+			if (tablero[yatacante][xatacante].ficha.getFicha() == Nombrefichas::CABALLO)
+				entry = 2;
+			if (tablero[yatacante][xatacante].ficha.getFicha() == Nombrefichas::TORRE)
+				entry = 3;
+			if (tablero[yatacante][xatacante].ficha.getFicha() == Nombrefichas::ALFIL)
+				entry = 4;
+			if (tablero[yatacante][xatacante].ficha.getFicha() == Nombrefichas::REINA)
+				entry = 5;
+			if (tablero[yatacante][xatacante].ficha.getFicha() == Nombrefichas::REY)
+				entry = 6;
+			if (tablero[yatacante][xatacante].ficha.getFicha() == Nombrefichas::VACIO)
+				entry = 0;
 				switch (tablero[yatacante][xatacante].ficha) {
-				case Nombrefichas::TORRE:
+				case 1://peon
+					return 2;
+				case 2://caballo
+					return 2;
+				case 3: //torre
 					{
 					if (xatacante == xrey) //están en la misma columna
 					{
@@ -117,8 +136,8 @@ int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando ) { //
 					return 2; //si ninguna de las iteraciones ha encontrado un bloqueo para el ataque, es jaque mate
 					}
 					}
-				case Nombrefichas::ALFIL:
-				{
+				case 4://alfil
+					{
 				if ((xatacante - xrey < 0) && (yatacante - yrey < 0)) //abajo a la izquierda del rey
 				{
 					for (int i = 1; (yatacante + i) < yrey; i++)
@@ -185,8 +204,8 @@ int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando ) { //
 				}
 				return 2; //si no se puede bloquear la trayectoria de la amenaza, es jaque mate
 				} //no pasa nada por comprobar siempre la y, ya que al moverse en diagonal, la distancia que habra en x e y al rey será siempre igual
-				case Nombrefichas::REINA: //combinamos las condiciones de la torre y el alfil para las de la reina
-				{
+				case 5: //reina, combinamos las condiciones de la torre y el alfil
+					{
 					if (xatacante == xrey) //están en la misma columna
 					{
 						if (yatacante < yrey) //si está debajo del rey, comprobamos las casillas que tiene encima una a una
@@ -326,11 +345,7 @@ int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando ) { //
 					}
 					return 2; //si no se puede bloquear la trayectoria de la amenaza, es jaque mate
 				}
-				case Nombrefichas::CABALLO:
-					return 2;
-				case Nombrefichas::PEON:
-					return 2;
-				case Nombrefichas::REY:
+				case 6:
 					return 2;
 				break; //los casos que solo tienen return 2 son porque esa pieza, al saltar a la posicion de ataque sin seguir una trayectoria, no se puede bloquear, por tanto es jaque mate automáticamente
 				default:

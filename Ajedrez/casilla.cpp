@@ -1,6 +1,5 @@
 #include "casilla.h"
 
-casillas casilla[9][9];
 
 void casillas::casillero() {
 
@@ -45,14 +44,15 @@ void casillas::casillero() {
 void casillas::vaciar(int fila, int columna) {
 
 	casilla[fila][columna].estado = 0;
-	casilla[fila][columna].ficha = '0';
+	casilla[fila][columna].ficha.setFicha(Nombrefichas::VACIO);
+
 
 }
 
-void casillas::ocupar(int fila, int columna, char pieza, char colorficha) {
+void casillas::ocupar(int fila, int columna, Nombrefichas pieza, char colorficha) {
 
 	casilla[fila][columna].estado = 1;
-	casilla[fila][columna].ficha = pieza;
+	casilla[fila][columna].ficha.setFicha(pieza);
 	casilla[fila][columna].fcolor = colorficha;
 
 }

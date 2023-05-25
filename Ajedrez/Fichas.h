@@ -17,6 +17,7 @@ public:
 	void movimiento();
 	void setPos(int fila2, int columna2);
 	Nombrefichas getFicha();
+	void setFicha(Nombrefichas ficha);
 	int getFila();
 	int getColumna();
 	virtual bool restricciones(int, int, int, int){}
