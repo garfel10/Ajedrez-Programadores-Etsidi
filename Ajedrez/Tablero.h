@@ -3,4 +3,5 @@
 class Tablero {
 public:
 	void dibuja();
+
 };

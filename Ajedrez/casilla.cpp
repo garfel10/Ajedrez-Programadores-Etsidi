@@ -1,7 +1,7 @@
 #include "casilla.h"
 
 casillas casilla[65];
-
+casillas test;
 void casillas::casillero (){
 
 	int n = 1;
@@ -55,16 +55,24 @@ void casillas::centros() {
 
 }
 
-void casillas::vaciar(int n) {
-
-	casilla[n].estado = 0;
-	casilla[n].ficha = '0';
+void casillas::iniciar() { //construccion estandar de casilla vacia, luego en la inicializacion del juego casillas concretas recibirán la pieza que deban tener
+	estado = 0;
+	ficha = Nombrefichas::VACIO;
+	bando = 2;
 
 }
 
-void casillas::ocupar(int n, char pieza) {
+void casillas::vaciar(int n) {
 
-	casilla[n].estado = 1;
-	casilla[n].ficha = pieza;
+	casilla[n].estado = 0;
+	casilla[n].ficha = Nombrefichas::VACIO;
+
+}
+
+void casillas::ocupar(int n, Nombrefichas pieza, char fcolor) {
+
+	test.estado = 1;
+	test.ficha = pieza;
+	test.fcolor = fcolor;
 
 }
