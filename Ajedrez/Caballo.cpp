@@ -1,11 +1,11 @@
 #include "Caballo.h"
 
 void Caballo::dibujar() {
-	if (Color == 1) {
-		imagen = new Sprite("bin/imagenes/Caballo Blanco", posicion.centrox, posicion.centroy, 1, 1);
+	if (casilla.fcolor == 'w') {
+		imagen = new Sprite("bin/imagenes/Caballo Blanco", casilla.centrox, casilla.centroy, 1, 1);
 	}
-	if (Color == 0) {
-		imagen = new Sprite("bin/imagenes/Caballo Negro", posicion.centrox, posicion.centroy, 1, 1);
+	if (casilla.fcolor == 'b') {
+		imagen = new Sprite("bin/imagenes/Caballo Negro", casilla.centrox, casilla.centroy, 1, 1);
 	}
 }
 

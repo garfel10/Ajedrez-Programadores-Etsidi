@@ -1,5 +1,6 @@
 #include "Tablero.h"
 #include <freeglut.h>
+#include"casilla.h"
 
 void Tablero::dibuja(){
     for (int i = 0; i < 8; i++)
@@ -26,6 +27,30 @@ void Tablero::dibuja(){
                 glEnd();
             }
             glEnable(GL_LIGHTING);
+        }
+    }
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            switch (casilla[i][j].ficha.getFicha()) {
+			case Nombrefichas::ALFIL:
+				alfil.dibujar();
+				break;
+			case Nombrefichas::TORRE:
+                torre.dibujar();
+				break;
+			case Nombrefichas::CABALLO:
+                caballo.dibujar();
+				break;
+			case Nombrefichas::PEON:
+                peon.dibujar();
+				break;
+			case Nombrefichas::REY:
+                rey.dibujar();
+				break;
+			case Nombrefichas::REINA:
+                reina.dibujar();
+				break;
+            }
         }
     }
 }

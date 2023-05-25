@@ -1,11 +1,11 @@
 #include "Rey.h"
 
 void Rey::dibujar() {
-	if (Color == 1) {
-		imagen = new Sprite("bin/imagenes/Rey Blanco", posicion.centrox, posicion.centroy, 1, 1);
+	if (casilla.fcolor == 'w') {
+		imagen = new Sprite("bin/imagenes/Rey Blanco", casilla.centrox, casilla.centroy, 1, 1);
 	}
-	if (Color == 0) {
-		imagen = new Sprite("bin/imagenes/Rey Negro", posicion.centrox, posicion.centroy, 1, 1);
+	if (casilla.fcolor == 'b') {
+		imagen = new Sprite("bin/imagenes/Rey Negro", casilla.centrox, casilla.centroy, 1, 1);
 	}
 }
 

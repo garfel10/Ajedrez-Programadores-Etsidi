@@ -1,11 +1,11 @@
 #include "Alfil.h"
 
 void Alfil::dibujar() {
-	if (Color == 1) {
-		imagen = new Sprite("bin/imagenes/Alfil Blanco", posicion.centrox, posicion.centroy, 1, 1);
+	if (casilla.fcolor == 'w') {
+		imagen = new Sprite("bin/imagenes/Alfil Blanco", casilla.centrox, casilla.centroy, 1, 1);
 	}
-	if (Color == 0) {
-		imagen = new Sprite("bin/imagenes/Alfil Negro", posicion.centrox, posicion.centroy, 1, 1);
+	if (casilla.fcolor == 'b') {
+		imagen = new Sprite("bin/imagenes/Alfil Negro", casilla.centrox, casilla.centroy, 1, 1);
 	}
 }
 

@@ -1,11 +1,11 @@
 #include "Peon.h"
 
 void Peon::dibujar() {
-	if (Color == 1) {
-		imagen = new Sprite("bin/imagenes/Peon Blanco", posicion.centrox, posicion.centroy, 1, 1);
+	if (casilla.fcolor == 'w') {
+		imagen = new Sprite("bin/imagenes/Peon Blanco", casilla.centrox, casilla.centroy, 1, 1);
 	}
-	if (Color == 0) {
-		imagen = new Sprite("bin/imagenes/Peon Negro", posicion.centrox, posicion.centroy, 1, 1);
+	if (casilla.fcolor == 'b') {
+		imagen = new Sprite("bin/imagenes/Peon Negro", casilla.centrox, casilla.centroy, 1, 1);
 	}
 }
 
