@@ -1,6 +1,6 @@
 #include "casilla.h"
 
-casillas casilla[8][8];
+casillas casilla[9][9];
 
 void casillas::casillero() {
 
@@ -13,8 +13,8 @@ void casillas::casillero() {
 	while (n < 65) {
 
 
-		casilla[i][j].c = i;
-		casilla[i][j].f = j;
+		casilla[i][j].f = i;
+		casilla[i][j].c = j;
 		casilla[i][j].numero = n;
 
 		if (i % 2 == j % 2) casilla[i][j].color = 'b';
@@ -35,23 +35,25 @@ void casillas::casillero() {
 		}
 
 	}
-	//se genera un vector que recorre el tablero por filas, de izquierda a derecha y de abajo a arriba.
+	//se fora una matriz [filas(8)][columnas(8)] que recorre cada fila de izquierda a derecha (1-8) y  cuando acaba con la fila pasa a la fila superior.
 
 }
 
 
 
-void casillas::vaciar(int columna,int fila) {
 
-	casilla[columna][fila].estado = 0;
-	casilla[columna][fila].ficha = '0';
+
+void casillas::vaciar(int fila, int columna) {
+
+	casilla[fila][columna].estado = 0;
+	casilla[fila][columna].ficha = '0';
 
 }
 
-void casillas::ocupar(int columna, int fila, char pieza, char colorficha) {
+void casillas::ocupar(int fila, int columna, char pieza, char colorficha) {
 
-	casilla [columna][fila].estado = 1;
-	casilla[columna][fila].ficha = pieza;
-	casilla[columna][fila].fcolor = colorficha;
+	casilla[fila][columna].estado = 1;
+	casilla[fila][columna].ficha = pieza;
+	casilla[fila][columna].fcolor = colorficha;
 
 }
