@@ -20,8 +20,8 @@ public:
 	
 	
 	//las funciones que utilizaran las fichas cuando "lleguen" o se "vayan"
-	void vaciar(int columna, int fila);
-	void ocupar(int columna, int fila, char pieza, char colorficha);
+	void vaciar(int fila, int columna);
+	void ocupar(int fila, int columna, char pieza, char colorficha);
 
 
 
