@@ -1,5 +1,5 @@
 #pragma once
-#include "Nombrefichas.h"
+/*#include "Nombrefichas.h"
 #include "lib/ETSIDI.h"
 #include "casilla.h"
 using ETSIDI::Sprite;
@@ -25,5 +25,5 @@ public:
 	void dibujar();
 	void borrarcontenido();
 	friend class casillas;
-};
+};*/
 

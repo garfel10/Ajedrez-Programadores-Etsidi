@@ -1,6 +1,6 @@
 #pragma once
-#include "Fichas.h"
-class Alfil:public Fichas
+#include "casilla.h"
+class Alfil:public casillas::Fichas
 {
 private:
 public:

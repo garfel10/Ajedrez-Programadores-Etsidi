@@ -1,5 +1,9 @@
 #pragma once
 #include "Fichas.h"
+#include "Nombrefichas.h"
+#include "lib/ETSIDI.h"
+using ETSIDI::Sprite;
+
 class casillas
 {
 public:
@@ -16,7 +20,30 @@ public:
 	unsigned char fcolor;//b black , w white. el color de la ficha se lo pasa la propia ficha. 
 	int bando;//como fcolor, pero mas facil de manejar en las funciones de la logica del juego, 1 es blanco, 0 es negro, 2 es vacio
 	//char ficha;//alfil:'A', torre 'T', caballo 'C', peon 'P', rey'K', reina 'Q', nulo '0'
-	Fichas ficha;//nueva para logica
+	//Fichas ficha;//nueva para logica
+	class Fichas
+	{
+	protected:
+		Nombrefichas Tipo;
+		int Fila, Columna;
+		char Color;
+		Sprite* imagen;
+
+	public:
+		Fichas(Nombrefichas tipo, int fila, int columna, char color);
+		Fichas();
+		//void movimiento();
+		void setPos(int fila2, int columna2);
+		Nombrefichas getFicha();
+		void setFicha(Nombrefichas ficha);
+		int getFila();
+		int getColumna();
+		//virtual bool restricciones(int, int, int, int) {}
+		void dibujar();
+		void borrarcontenido();
+		friend class casillas;
+	};
+	Fichas ficha;
 	int numero;//la n
 
 
@@ -28,11 +55,6 @@ public:
 	//las funciones que utilizaran las fichas cuando "lleguen" o se "vayan"
 	void vaciar(int fila, int columna);
 	void ocupar(int fila, int columna, Nombrefichas pieza, char colorficha);
-
-
-
-
-
 
 };
 casillas casilla[9][9];

@@ -1,6 +1,6 @@
 #pragma once
-#include "Fichas.h"
-class Reina : public Fichas
+#include "casilla.h"
+class Reina : public casillas::Fichas
 {
 private:
 public:
