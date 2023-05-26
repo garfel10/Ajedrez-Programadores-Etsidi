@@ -7,6 +7,7 @@
 //posiblemente se coloque el codigo directamente en main, tras la selección del juego en el menú
 void turnos() {
 	juego juego;
+	int xrey=0, yrey = 0; //temporal, se sacarán de juego en cada turno
 	
 	//generación del tablero, primero todas las casillas como huecos
 	
@@ -67,7 +68,7 @@ void turnos() {
 			//posatacante[1]=mover(casilla, bando, estaenjaque);
 			juego.amenazar(bando);
 			juego.clavada(bando);
-			jaqueresultado = jaque(casilla,bando, posatacante[0], posatacante[1]);
+			jaqueresultado = jaque(casilla,bando, posatacante[0], posatacante[1], xrey, yrey);
 			if (jaqueresultado == 1) //si hay jaque, el movimiento del otro bando se verá condicionado
 			{
 				estaenjaque == true;
@@ -87,9 +88,10 @@ void victoria(int bando)
 {
 	//representacion gráfica del ganador, "ganan blancas", "ganan negras", o si ponemos que puedas poner nombres "gana nombreblancas", "gana nombrenegras"
 }
-int mover(casillas tablero[8][8], int bando, bool jaque)
+/*int mover(casillas tablero[8][8], int bando, bool jaque)
 {
 	int posfinal[1];
 
 	return posfinal[1];
 }
+*/

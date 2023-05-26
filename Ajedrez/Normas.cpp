@@ -4,9 +4,8 @@
 #include "casilla.h"
 
 
-int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando ) { //comprueba si el rey está en jaque, y si lo está, comprueba si está en jaque mate
+int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando, int xrey, int yrey ) { //comprueba si el rey está en jaque, y si lo está, comprueba si está en jaque mate
 	//datos de prueba, luego serán sustituidos por los equivalentes en la clase tablero
-	int xrey, yrey;
 	int entry = 0;//entrada a switch case
 	Nombrefichas atacante=tablero[yatacante][xatacante].ficha.getFicha();// miramos que tipo de ficha es la que ataca, creo que esto esta mal planteado, habra que tener de input a la funcion la ficha atacante directamente
 	int bandoatacante;

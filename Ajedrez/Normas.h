@@ -8,4 +8,4 @@
 #include "Reina.h"
 #include "Reina.h"
 
-int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando);
+int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando, int xrey, int yrey);

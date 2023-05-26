@@ -33,9 +33,9 @@ public:
 		Fichas(Nombrefichas tipo, int fila, int columna, char color);
 		Fichas();
 		//void movimiento();
-		void setPos(int fila2, int columna2);
+		void setPos(int , int );
 		Nombrefichas getFicha();
-		void setFicha(Nombrefichas ficha);
+		void setFicha(Nombrefichas );
 		int getFila();
 		int getColumna();
 		//virtual bool restricciones(int, int, int, int) {}
@@ -53,8 +53,8 @@ public:
 	
 	
 	//las funciones que utilizaran las fichas cuando "lleguen" o se "vayan"
-	void vaciar(int fila, int columna);
-	void ocupar(int fila, int columna, Nombrefichas pieza, char colorficha);
+	void vaciar(int , int );
+	void ocupar(int , int , Nombrefichas , char );
 
 };
-casillas casilla[9][9];
+extern casillas casilla[9][9];

@@ -9,6 +9,7 @@ public:
     bool clavadaficha(int bando, int ob, int i, int j);
     void clavada(int bando);
     void movimiento();
+    int jaque(int xatacante, int yatacante, int bando, int xrey, int yrey);
    
 };
 

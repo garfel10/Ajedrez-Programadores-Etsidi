@@ -1,0 +1,10 @@
+﻿  casilla.cpp
+  Fichas.cpp
+  juego.cpp
+  Generando código...
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\Ajedrez\juego.cpp(746): warning C4715: 'juego::clavadaficha': no todas las rutas de acceso de control devuelven un valor
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\Ajedrez\juego.cpp(1224): warning C4715: 'juego::jaque': no todas las rutas de acceso de control devuelven un valor
+Fichas.obj : error LNK2005: ya se definió "public: void __cdecl casillas::casillero(void)" (?casillero@casillas@@QEAAXXZ) en casilla.obj
+Fichas.obj : error LNK2005: ya se definió "public: void __cdecl casillas::ocupar(int,int,enum Nombrefichas,char)" (?ocupar@casillas@@QEAAXHHW4Nombrefichas@@D@Z) en casilla.obj
+Fichas.obj : error LNK2005: ya se definió "public: void __cdecl casillas::vaciar(int,int)" (?vaciar@casillas@@QEAAXHH@Z) en casilla.obj
+LINK : fatal error LNK1104: no se puede abrir el archivo 'ETSIDI.lib'
