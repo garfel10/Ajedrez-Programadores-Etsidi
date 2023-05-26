@@ -18,7 +18,7 @@ Fichas::Fichas(Nombrefichas tipo, int fila, int columna, char color) {
 }
 
 Fichas::Fichas(){}
-
+/*
 void Fichas::movimiento() {
 
 	Peon peon;
@@ -132,7 +132,7 @@ void Fichas::movimiento() {
 
 	
 }
-
+*/
 int Fichas::getFila() {
 	return Fila;
 }
