@@ -6,7 +6,7 @@
 #include"Caballo.h"
 #include"Alfil.h"
 #include"Rey.h"
-#include"Reina.h"*/
+#include"Reina.h"
 #include <iostream>
 using namespace std;
 
