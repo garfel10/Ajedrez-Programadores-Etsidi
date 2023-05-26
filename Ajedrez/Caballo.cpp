@@ -1,5 +1,7 @@
 #include "Caballo.h"
 
+Caballo::Caballo(){}
+
 void Caballo::dibujar() {
 	if (casilla.fcolor == 'w') {
 		imagen = new Sprite("bin/imagenes/Caballo Blanco", casilla.centrox, casilla.centroy, 1, 1);

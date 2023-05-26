@@ -1,7 +1,7 @@
 #include "Fichas.h"
 #include "lib/ETSIDI.h"
 #include "casilla.cpp"
-/*#include"Peon.h"
+#include"Peon.h"
 #include"Torre.h"
 #include"Caballo.h"
 #include"Alfil.h"
@@ -17,7 +17,16 @@ Fichas::Fichas(Nombrefichas tipo, int fila, int columna, char color) {
 	color = Color;
 }
 
+Fichas::Fichas(){}
+
 void Fichas::movimiento() {
+
+	Peon peon;
+	Torre torre;
+	Caballo caballo;
+	Alfil alfil;
+	Rey rey;
+	Reina reina;
 
 	int filaini=0, columnaini=0;
 	
@@ -49,7 +58,6 @@ void Fichas::movimiento() {
 		cout << "Introduzca la fila y columna a donde quiere mover la ficha: ";
 		cin >> filafin >> columnafin;
 	 } while (filafin > 8 || columnafin > 8 || filafin < 0 || columnafin < 0); //Así nos aseguramos que las coordenadas introducidas son correctas y están dentro del tablero
-	
 
 	switch (casilla[filaini][columnaini].ficha.getFicha()) {
 	case Nombrefichas::ALFIL:

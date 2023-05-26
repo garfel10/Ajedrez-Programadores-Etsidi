@@ -1,5 +1,7 @@
 #include "Rey.h"
 
+Rey::Rey(){}
+
 void Rey::dibujar() {
 	if (casilla.fcolor == 'w') {
 		imagen = new Sprite("bin/imagenes/Rey Blanco", casilla.centrox, casilla.centroy, 1, 1);

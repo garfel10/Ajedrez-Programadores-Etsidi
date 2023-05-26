@@ -8,9 +8,9 @@ int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando ) { //
 	//datos de prueba, luego serán sustituidos por los equivalentes en la clase tablero
 	int xrey, yrey;
 	int entry = 0;//entrada a switch case
-	Nombrefichas atacante=tablero[yatacante][xatacante].ficha;// miramos que tipo de ficha es la que ataca, creo que esto esta mal planteado, habra que tener de input a la funcion la ficha atacante directamente
+	Nombrefichas atacante=tablero[yatacante][xatacante].ficha.getFicha();// miramos que tipo de ficha es la que ataca, creo que esto esta mal planteado, habra que tener de input a la funcion la ficha atacante directamente
 	int bandoatacante;
-	if (bando = 1)
+	if (bando == 1)
 		bandoatacante = 0;
 	else
 		bandoatacante = 1; //ponemos al bando atacante como contrario del defensor y comprobamos si está amenazada
@@ -55,7 +55,7 @@ int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando ) { //
 				entry = 6;
 			if (tablero[yatacante][xatacante].ficha.getFicha() == Nombrefichas::VACIO)
 				entry = 0;
-				switch (tablero[yatacante][xatacante].ficha) {
+				switch (entry/*tablero[yatacante][xatacante].ficha*/) {
 				case 1://peon
 					return 2;
 				case 2://caballo
@@ -348,7 +348,7 @@ int jaque(casillas tablero[9][9], int xatacante, int yatacante, int bando ) { //
 				case 6:
 					return 2;
 				break; //los casos que solo tienen return 2 son porque esa pieza, al saltar a la posicion de ataque sin seguir una trayectoria, no se puede bloquear, por tanto es jaque mate automáticamente
-				default:
+				
 				}
 		}
 	}

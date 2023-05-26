@@ -14,6 +14,7 @@ protected:
 
 public:
 	Fichas(Nombrefichas tipo, int fila, int columna, char color);
+	Fichas();
 	void movimiento();
 	void setPos(int fila2, int columna2);
 	Nombrefichas getFicha();

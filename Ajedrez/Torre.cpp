@@ -1,5 +1,7 @@
 #include "Torre.h"
 
+Torre::Torre(){}
+
 void Torre::dibujar() {
 	if (casilla.fcolor == 'w') {
 		imagen = new Sprite("bin/imagenes/Torre Blanco", casilla.centrox, casilla.centroy, 1, 1);

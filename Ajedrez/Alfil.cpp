@@ -1,5 +1,7 @@
 #include "Alfil.h"
 
+Alfil::Alfil(){}
+
 void Alfil::dibujar() {
 	if (casilla.fcolor == 'w') {
 		imagen = new Sprite("bin/imagenes/Alfil Blanco", casilla.centrox, casilla.centroy, 1, 1);

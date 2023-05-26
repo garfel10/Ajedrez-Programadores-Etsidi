@@ -1,5 +1,7 @@
 #include "Peon.h"
 
+Peon::Peon(){}
+
 void Peon::dibujar() {
 	if (casilla.fcolor == 'w') {
 		imagen = new Sprite("bin/imagenes/Peon Blanco", casilla.centrox, casilla.centroy, 1, 1);

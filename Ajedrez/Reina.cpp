@@ -1,4 +1,7 @@
 #include "Reina.h"
+#include "Reina.h"
+
+Reina::Reina(){}
 
 void Reina::dibujar() {
 	if (casilla.fcolor == 'w') {

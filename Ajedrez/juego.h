@@ -9,6 +9,6 @@ public:
     bool clavadaficha(int bando, int ob, int i, int j);
     void clavada(int bando);
 
-
+   
 };
 
