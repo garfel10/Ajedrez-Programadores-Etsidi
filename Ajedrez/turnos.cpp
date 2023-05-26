@@ -66,7 +66,7 @@ void turnos() {
 			//posatacante[1]=mover(casilla, bando, estaenjaque);
 			juego.amenazar(bando);
 			juego.clavada(bando);
-			jaqueresultado = jaque(casilla,bando, posatacante[0], posatacante[1], xrey, yrey);
+			jaqueresultado = juego.jaque(posatacante[0], posatacante[1], bando, xrey, yrey);
 			if (jaqueresultado == 1) //si hay jaque, el movimiento del otro bando se verá condicionado
 			{
 				estaenjaque == true;
