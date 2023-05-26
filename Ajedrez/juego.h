@@ -9,6 +9,9 @@ public:
     bool clavadaficha(int bando, int ob, int i, int j);
     void clavada(int bando);
     void movimiento();
+    void casillero();
+    void ocupar(int fila, int columna, Nombrefichas pieza, char colorficha);
+    void vaciar(int fila, int columna);
     int jaque(int xatacante, int yatacante, int bando, int xrey, int yrey);
    
 };

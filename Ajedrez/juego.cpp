@@ -819,48 +819,48 @@ void juego::movimiento() {
 	switch (r) {
 	case 1:
 		if (alfil.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::ALFIL, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::ALFIL, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case 2:
 		if (torre.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::TORRE, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::TORRE, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case 3:
 		if (caballo.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::CABALLO, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::CABALLO, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case 4:
 		if (peon.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::PEON, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::PEON, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case 5:
 		if (rey.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::REY, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::REY, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case 6:
 		if (reina.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::REINA, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::REINA, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
@@ -871,6 +871,60 @@ void juego::movimiento() {
 
 }
 
+
+void juego::casillero() {
+
+	int n = 1;
+	int i = 1;
+	int j = 1;
+
+
+
+	while (n < 65) {
+
+		//la i es la fila y la j la columna: casilla[fila][columna]
+		casilla[i][j].f = i;
+		casilla[i][j].c = j;
+		casilla[i][j].numero = n;
+
+		if (i % 2 == j % 2) casilla[i][j].color = 'b';
+		else casilla[i][j].color = 'w';
+
+
+		casilla[i][j].centrox = 1 + i;
+		casilla[i][j].centroy = 1 + j;
+
+
+
+
+		n++;
+		if (j < 8) j++;
+		else {
+			j = 1;
+			i++;
+		}
+	}
+	//se fora una matriz [filas(8)][columnas(8)] que recorre cada fila de izquierda a derecha (1-8) y  cuando acaba con la fila pasa a la fila superior.
+
+}
+
+void juego::ocupar(int fila, int columna, Nombrefichas pieza, char colorficha) {
+
+	casilla[fila][columna].estado = 1;
+	casilla[fila][columna].fcolor = colorficha;
+	casilla[fila][columna].ficha.setFicha(pieza);
+	casilla[fila][columna].ficha.setPos(fila, columna);
+	casilla[fila][columna].ficha.Color = colorficha;
+
+}
+
+void juego::vaciar(int fila, int columna) {
+
+	casilla[fila][columna].estado = 0;
+	casilla[fila][columna].ficha.setFicha(Nombrefichas::VACIO);
+	casilla[fila][columna].ficha.borrarcontenido();
+
+}
 
 int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { //comprueba si el rey está en jaque, y si lo está, comprueba si está en jaque mate
 	//datos de prueba, luego serán sustituidos por los equivalentes en la clase tablero

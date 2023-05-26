@@ -14,7 +14,6 @@ public:
 	int c; //COLUMNA (1-8)
 	int f; //FILA (1-8)
 	unsigned char color;//b black, w white
-	void casillero(); //Para generar el tablero lógico. Vector casillas de 1 a 64. cada una con su color.
 	int estado = 0; // 1 ocupada, 0 libre. Lo inicializamos a 0 y cuando se inicialicen las fichas ya se ponen a 1 las que se tienen que poner.
 	//las casillas ocupadas seran de la 1 a la 16 y de la 48 a la 
 	unsigned char fcolor;//b black , w white. el color de la ficha se lo pasa la propia ficha. 
@@ -23,13 +22,11 @@ public:
 	//Fichas ficha;//nueva para logica
 	class Fichas
 	{
-	protected:
+	public:
 		Nombrefichas Tipo;
 		int Fila, Columna;
 		char Color;
 		Sprite* imagen;
-
-	public:
 		Fichas(Nombrefichas tipo, int fila, int columna, char color);
 		Fichas();
 		//void movimiento();
@@ -53,8 +50,8 @@ public:
 	
 	
 	//las funciones que utilizaran las fichas cuando "lleguen" o se "vayan"
-	void vaciar(int , int );
-	void ocupar(int , int , Nombrefichas , char );
+	
+	
 
 };
 extern casillas casilla[9][9];
