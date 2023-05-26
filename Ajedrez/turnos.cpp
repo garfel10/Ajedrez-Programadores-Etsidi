@@ -1,6 +1,4 @@
 
-#include "Normas.cpp"
-#include "Normas.h"
 #include "turnos.h"
 #include "juego.h"
 
