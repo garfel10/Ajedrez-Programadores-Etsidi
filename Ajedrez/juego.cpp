@@ -819,48 +819,48 @@ void juego::movimiento() {
 	switch (r) {
 	case 1:
 		if (alfil.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::ALFIL, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::ALFIL, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case 2:
 		if (torre.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::TORRE, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::TORRE, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case 3:
 		if (caballo.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::CABALLO, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::CABALLO, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case 4:
 		if (peon.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::PEON, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::PEON, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case 5:
 		if (rey.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::REY, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::REY, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
 		break;
 	case 6:
 		if (reina.restricciones(filafin, columnafin, filaini, columnaini)) {
-			casilla[filafin][columnafin].ocupar(filafin, columnafin, Nombrefichas::REINA, casilla[filaini][columnaini].fcolor);
-			casilla[filaini][columnaini].vaciar(filaini, columnaini);
+			ocupar(filafin, columnafin, Nombrefichas::REINA, casilla[filaini][columnaini].fcolor);
+			vaciar(filaini, columnaini);
 		}
 		else
 			cout << "Movimiento no permitido";
@@ -908,7 +908,23 @@ void juego::casillero() {
 
 }
 
+void juego::ocupar(int fila, int columna, Nombrefichas pieza, char colorficha) {
 
+	casilla[fila][columna].estado = 1;
+	casilla[fila][columna].fcolor = colorficha;
+	casilla[fila][columna].ficha.setFicha(pieza);
+	casilla[fila][columna].ficha.setPos(fila, columna);
+	casilla[fila][columna].ficha.Color = colorficha;
+
+}
+
+void juego::vaciar(int fila, int columna) {
+
+	casilla[fila][columna].estado = 0;
+	casilla[fila][columna].ficha.setFicha(Nombrefichas::VACIO);
+	casilla[fila][columna].ficha.borrarcontenido();
+
+}
 
 int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { //comprueba si el rey está en jaque, y si lo está, comprueba si está en jaque mate
 	//datos de prueba, luego serán sustituidos por los equivalentes en la clase tablero

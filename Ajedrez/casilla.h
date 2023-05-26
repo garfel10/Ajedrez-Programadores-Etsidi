@@ -22,13 +22,11 @@ public:
 	//Fichas ficha;//nueva para logica
 	class Fichas
 	{
-	protected:
+	public:
 		Nombrefichas Tipo;
 		int Fila, Columna;
 		char Color;
 		Sprite* imagen;
-
-	public:
 		Fichas(Nombrefichas tipo, int fila, int columna, char color);
 		Fichas();
 		//void movimiento();
@@ -52,8 +50,8 @@ public:
 	
 	
 	//las funciones que utilizaran las fichas cuando "lleguen" o se "vayan"
-	void vaciar(int , int );
-	void ocupar(int , int , Nombrefichas , char );
+	
+	
 
 };
 extern casillas casilla[9][9];
