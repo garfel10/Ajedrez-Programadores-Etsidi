@@ -1,0 +1,3 @@
+﻿  Alfil.cpp
+C:\temp\AJ\src\Alfil.cpp(6,14): error C2228: left of '.fcolor' must have class/struct/union
+C:\temp\AJ\src\Alfil.cpp(6,14): message : type is 'casillas [9][9]'
