@@ -1,3 +1,25 @@
 ﻿  Alfil.cpp
-C:\temp\AJ\src\Alfil.cpp(6,14): error C2228: left of '.fcolor' must have class/struct/union
-C:\temp\AJ\src\Alfil.cpp(6,14): message : type is 'casillas [9][9]'
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Alfil.cpp(6,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Alfil.cpp(6,14): message : el tipo es 'casillas [9][9]'
+  Caballo.cpp
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Caballo.cpp(6,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Caballo.cpp(6,14): message : el tipo es 'casillas [9][9]'
+  Peon.cpp
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Peon.cpp(6,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Peon.cpp(6,14): message : el tipo es 'casillas [9][9]'
+  Reina.cpp
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Reina.cpp(7,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Reina.cpp(7,14): message : el tipo es 'casillas [9][9]'
+  Rey.cpp
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Rey.cpp(6,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Rey.cpp(6,14): message : el tipo es 'casillas [9][9]'
+  Torre.cpp
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Torre.cpp(6,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Torre.cpp(6,14): message : el tipo es 'casillas [9][9]'
+  turnos.cpp
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\turnos.cpp(55,16): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\turnos.cpp(59,16): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\turnos.cpp(72,17): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\turnos.cpp(76,17): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
+  Vector.cpp
+  Generando código...
