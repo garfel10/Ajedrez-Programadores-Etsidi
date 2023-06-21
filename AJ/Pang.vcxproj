@@ -19,35 +19,36 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Caballo.cpp" />
-    <ClCompile Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\casilla.cpp" />
-    <ClCompile Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Fichas.cpp" />
-    <ClCompile Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\juego.cpp" />
-    <ClCompile Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Peon.cpp" />
-    <ClCompile Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Reina.cpp" />
-    <ClCompile Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Rey.cpp" />
-    <ClCompile Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Torre.cpp" />
-    <ClCompile Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\turnos.cpp" />
     <ClCompile Include="src\Alfil.cpp" />
+    <ClCompile Include="src\Caballo.cpp" />
+    <ClCompile Include="src\casilla.cpp" />
+    <ClCompile Include="src\Fichas.cpp" />
+    <ClCompile Include="src\juego.cpp" />
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\MenuInicio.cpp" />
+    <ClCompile Include="src\Peon.cpp" />
+    <ClCompile Include="src\Reina.cpp" />
+    <ClCompile Include="src\Rey.cpp" />
     <ClCompile Include="src\Tablero.cpp" />
+    <ClCompile Include="src\Torre.cpp" />
+    <ClCompile Include="src\turnos.cpp" />
+    <ClCompile Include="src\Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Caballo.h" />
-    <ClInclude Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\casilla.h" />
-    <ClInclude Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Fichas.h" />
-    <ClInclude Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\juego.h" />
-    <ClInclude Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Nombrefichas.h" />
-    <ClInclude Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Normas.h" />
-    <ClInclude Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Peon.h" />
-    <ClInclude Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Reina.h" />
-    <ClInclude Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Rey.h" />
-    <ClInclude Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\Torre.h" />
-    <ClInclude Include="..\Ajedrez-Programadores-Etsidi-main\Ajedrez\turnos.h" />
     <ClInclude Include="src\Alfil.h" />
+    <ClInclude Include="src\Caballo.h" />
+    <ClInclude Include="src\casilla.h" />
+    <ClInclude Include="src\Fichas.h" />
+    <ClInclude Include="src\juego.h" />
     <ClInclude Include="src\MenuInicio.h" />
+    <ClInclude Include="src\Nombrefichas.h" />
+    <ClInclude Include="src\Peon.h" />
+    <ClInclude Include="src\Reina.h" />
+    <ClInclude Include="src\Rey.h" />
     <ClInclude Include="src\Tablero.h" />
+    <ClInclude Include="src\Torre.h" />
+    <ClInclude Include="src\turnos.h" />
+    <ClInclude Include="src\Vector.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
