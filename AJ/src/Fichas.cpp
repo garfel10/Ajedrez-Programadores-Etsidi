@@ -1,6 +1,6 @@
 #include "Fichas.h"
 #include"casilla.h"
-#include "lib/ETSIDI.h"
+#include "ETSIDI.h"
 #include "casilla.cpp"
 #include"Peon.h"
 #include"Torre.h"

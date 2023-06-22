@@ -7,7 +7,7 @@ using ETSIDI::Sprite;
 class casillas
 {
 public:
-
+	casillas() = default;
 	bool amenazablanca;
 	bool amenazanegra;
 	bool clavada;

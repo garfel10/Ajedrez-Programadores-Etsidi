@@ -1,25 +1,68 @@
 ﻿  Alfil.cpp
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Alfil.cpp(6,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Alfil.cpp(6,14): message : el tipo es 'casillas [9][9]'
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Alfil.cpp(7,106): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Alfil.cpp(7,74): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Alfil.cpp(10,105): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Alfil.cpp(10,73): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   Caballo.cpp
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Caballo.cpp(6,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Caballo.cpp(6,14): message : el tipo es 'casillas [9][9]'
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Caballo.cpp(7,108): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Caballo.cpp(7,76): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Caballo.cpp(10,107): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Caballo.cpp(10,75): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Fichas.cpp
+  MenuInicio.cpp
   Peon.cpp
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Peon.cpp(6,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Peon.cpp(6,14): message : el tipo es 'casillas [9][9]'
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Peon.cpp(7,105): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Peon.cpp(7,73): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Peon.cpp(10,104): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Peon.cpp(10,72): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   Reina.cpp
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Reina.cpp(7,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Reina.cpp(7,14): message : el tipo es 'casillas [9][9]'
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Reina.cpp(9,106): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Reina.cpp(9,74): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Reina.cpp(12,105): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Reina.cpp(12,73): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
   Rey.cpp
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Rey.cpp(6,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Rey.cpp(6,14): message : el tipo es 'casillas [9][9]'
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Rey.cpp(7,104): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Rey.cpp(7,72): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Rey.cpp(10,103): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Rey.cpp(10,71): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  Tablero.cpp
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(21,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(21,30): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(22,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(22,30): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(23,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(23,30): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(24,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(24,30): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(30,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(30,30): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(31,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(31,30): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(32,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(32,30): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(33,39): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Tablero.cpp(33,30): warning C4244: 'argumento': conversión de 'double' a 'GLfloat'; posible pérdida de datos
   Torre.cpp
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Torre.cpp(6,14): error C2228: el operando izquierdo de '.fcolor' debe tener class/struct/union
-C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Torre.cpp(6,14): message : el tipo es 'casillas [9][9]'
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Torre.cpp(7,106): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Torre.cpp(7,74): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Torre.cpp(10,105): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\Torre.cpp(10,73): warning C4244: 'argumento': conversión de 'int' a 'float'; posible pérdida de datos
+  casilla.cpp
+  juego.cpp
   turnos.cpp
 C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\turnos.cpp(55,16): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
 C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\turnos.cpp(59,16): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
 C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\turnos.cpp(72,17): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
 C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\turnos.cpp(76,17): warning C4553: "==": el resultado de la expresión no se usa. ¿Quiso decir "="?
-  Vector.cpp
   Generando código...
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\juego.cpp(1278): warning C4715: 'juego::jaque': no todas las rutas de acceso de control devuelven un valor
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\src\juego.cpp(746): warning C4715: 'juego::clavadaficha': no todas las rutas de acceso de control devuelven un valor
+Reina.obj : error LNK2001: símbolo externo "class casillas (* casilla)[9]" (?casilla@@3PAY08Vcasillas@@A) sin resolver
+Rey.obj : error LNK2001: símbolo externo "class casillas (* casilla)[9]" (?casilla@@3PAY08Vcasillas@@A) sin resolver
+Tablero.obj : error LNK2001: símbolo externo "class casillas (* casilla)[9]" (?casilla@@3PAY08Vcasillas@@A) sin resolver
+Torre.obj : error LNK2001: símbolo externo "class casillas (* casilla)[9]" (?casilla@@3PAY08Vcasillas@@A) sin resolver
+Alfil.obj : error LNK2001: símbolo externo "class casillas (* casilla)[9]" (?casilla@@3PAY08Vcasillas@@A) sin resolver
+Caballo.obj : error LNK2001: símbolo externo "class casillas (* casilla)[9]" (?casilla@@3PAY08Vcasillas@@A) sin resolver
+juego.obj : error LNK2001: símbolo externo "class casillas (* casilla)[9]" (?casilla@@3PAY08Vcasillas@@A) sin resolver
+Peon.obj : error LNK2001: símbolo externo "class casillas (* casilla)[9]" (?casilla@@3PAY08Vcasillas@@A) sin resolver
+C:\Users\pablo\Documents\GitHub\Ajedrez-Programadores-Etsidi\AJ\bin\Pang.exe : fatal error LNK1120: 1 externos sin resolver

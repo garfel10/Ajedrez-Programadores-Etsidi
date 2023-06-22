@@ -1,5 +1,6 @@
 #include "Reina.h"
-#include "Reina.h"
+#include "casilla.h"
+#include "casilla.cpp"
 
 Reina::Reina(){}
 
