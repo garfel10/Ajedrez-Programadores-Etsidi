@@ -3,12 +3,12 @@
 
 Reina::Reina(){}
 
-void Reina::dibujar() {
-	if (casilla.fcolor == 'w') {
-		imagen = new Sprite("bin/imagenes/Reina Blanco", casilla.centrox, casilla.centroy, 1, 1);
+void Reina::dibujar(int fila, int columna) {
+	if (casilla[fila][columna].fcolor == 'w') {
+		imagen = new Sprite("bin/imagenes/Reina Blanco", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
 	}
-	if (casilla.fcolor == 'b') {
-		imagen = new Sprite("bin/imagenes/Reina Negro", casilla.centrox, casilla.centroy, 1, 1);
+	if (casilla[fila][columna].fcolor == 'b') {
+		imagen = new Sprite("bin/imagenes/Reina Negro", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
 	}
 }
 

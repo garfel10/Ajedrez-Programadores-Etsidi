@@ -40,22 +40,22 @@ void Tablero::dibuja(){
         for (int j = 0; j < 8; j++) {
             switch (casilla[i][j].ficha.getFicha()) {
 			case Nombrefichas::ALFIL:
-				alfil.dibujar();
+				alfil.dibujar(i,j);
 				break;
 			case Nombrefichas::TORRE:
-                torre.dibujar();
+                torre.dibujar(i, j);
 				break;
 			case Nombrefichas::CABALLO:
-                caballo.dibujar();
+                caballo.dibujar(i, j);
 				break;
 			case Nombrefichas::PEON:
-                peon.dibujar();
+                peon.dibujar(i, j);
 				break;
 			case Nombrefichas::REY:
-                rey.dibujar();
+                rey.dibujar(i, j);
 				break;
 			case Nombrefichas::REINA:
-                reina.dibujar();
+                reina.dibujar(i, j);
 				break;
             }
         }

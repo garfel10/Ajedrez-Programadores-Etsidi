@@ -2,12 +2,12 @@
 
 Peon::Peon(){}
 
-void Peon::dibujar() {
-	if (casilla.fcolor == 'w') {
-		imagen = new Sprite("bin/imagenes/Peon Blanco", casilla.centrox, casilla.centroy, 1, 1);
+void Peon::dibujar(int fila, int columna) {
+	if (casilla[fila][columna].fcolor == 'w') {
+		imagen = new Sprite("bin/imagenes/Peon Blanco", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
 	}
-	if (casilla.fcolor == 'b') {
-		imagen = new Sprite("bin/imagenes/Peon Negro", casilla.centrox, casilla.centroy, 1, 1);
+	if (casilla[fila][columna].fcolor == 'b') {
+		imagen = new Sprite("bin/imagenes/Peon Negro", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
 	}
 }
 

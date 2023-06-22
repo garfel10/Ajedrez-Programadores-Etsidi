@@ -2,12 +2,12 @@
 
 Alfil::Alfil(){}
 
-void Alfil::dibujar() {
-	if (casilla.fcolor == 'w') {
-		imagen = new Sprite("bin/imagenes/Alfil Blanco", casilla.centrox, casilla.centroy, 1, 1);
+void Alfil::dibujar(int fila, int columna) {
+	if (casilla[fila][columna].fcolor == 'w') {
+		imagen = new Sprite("bin/imagenes/Alfil Blanco", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
 	}
-	if (casilla.fcolor == 'b') {
-		imagen = new Sprite("bin/imagenes/Alfil Negro", casilla.centrox, casilla.centroy, 1, 1);
+	if (casilla[fila][columna].fcolor == 'b') {
+		imagen = new Sprite("bin/imagenes/Alfil Negro", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
 	}
 }
 
