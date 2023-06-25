@@ -3,11 +3,11 @@
 Torre::Torre(){}
 
 void Torre::dibujar(int fila, int columna) {
-	if (casilla[fila][columna].fcolor == 'w') {
-		imagen = new Sprite("bin/imagenes/Torre Blanco", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
+	if (Tablero::casilla[fila][columna].fcolor == 'w') {
+		imagen = new Sprite("bin/imagenes/Torre Blanco", Tablero::casilla[fila][columna].centrox, Tablero::casilla[fila][columna].centroy, 1, 1);
 	}
-	if (casilla[fila][columna].fcolor == 'b') {
-		imagen = new Sprite("bin/imagenes/Torre Negro", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
+	if (Tablero::casilla[fila][columna].fcolor == 'b') {
+		imagen = new Sprite("bin/imagenes/Torre Negro", Tablero::casilla[fila][columna].centrox, Tablero::casilla[fila][columna].centroy, 1, 1);
 	}
 }
 

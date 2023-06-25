@@ -3,11 +3,11 @@
 Peon::Peon(){}
 
 void Peon::dibujar(int fila, int columna) {
-	if (casilla[fila][columna].fcolor == 'w') {
-		imagen = new Sprite("bin/imagenes/Peon Blanco", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
+	if (Tablero::casilla[fila][columna].fcolor == 'w') {
+		imagen = new Sprite("bin/imagenes/Peon Blanco", Tablero::casilla[fila][columna].centrox, Tablero::casilla[fila][columna].centroy, 1, 1);
 	}
-	if (casilla[fila][columna].fcolor == 'b') {
-		imagen = new Sprite("bin/imagenes/Peon Negro", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
+	if (Tablero::casilla[fila][columna].fcolor == 'b') {
+		imagen = new Sprite("bin/imagenes/Peon Negro", Tablero::casilla[fila][columna].centrox, Tablero::casilla[fila][columna].centroy, 1, 1);
 	}
 }
 

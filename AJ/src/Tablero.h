@@ -5,8 +5,10 @@
 #include "Peon.h"
 #include "Rey.h"
 #include "Reina.h"
+#include "casilla.h"
 
 class Tablero {
 public:
+	static casillas casilla[9][9];
 	void dibuja();
 };

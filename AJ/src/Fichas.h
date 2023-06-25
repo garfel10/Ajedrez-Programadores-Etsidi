@@ -1,6 +1,6 @@
 #pragma once
-/*#include "Nombrefichas.h"
-#include "lib/ETSIDI.h"
+#include "Nombrefichas.h"
+#include "ETSIDI.h"
 #include "casilla.h"
 using ETSIDI::Sprite;
 
@@ -19,11 +19,12 @@ public:
 	void setPos(int fila2, int columna2);
 	Nombrefichas getFicha();
 	void setFicha(Nombrefichas ficha);
+	void setColor(char);
 	int getFila();
 	int getColumna();
 	virtual bool restricciones(int, int, int, int){}
 	void dibujar();
 	void borrarcontenido();
 	friend class casillas;
-};*/
+};
 

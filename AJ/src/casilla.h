@@ -1,6 +1,7 @@
 #pragma once
 #include "Fichas.h"
 #include "Nombrefichas.h"
+#include "Tablero.h"
 #include "ETSIDI.h"
 using ETSIDI::Sprite;
 
@@ -20,7 +21,7 @@ public:
 	int bando;//como fcolor, pero mas facil de manejar en las funciones de la logica del juego, 1 es blanco, 0 es negro, 2 es vacio
 	//char ficha;//alfil:'A', torre 'T', caballo 'C', peon 'P', rey'K', reina 'Q', nulo '0'
 	//Fichas ficha;//nueva para logica
-	class Fichas
+	/*class Fichas
 	{
 	public:
 		Nombrefichas Tipo;
@@ -39,8 +40,8 @@ public:
 		void dibujar();
 		void borrarcontenido();
 		friend class casillas;
-	};
-	Fichas ficha;
+	};*/
+	Fichas *ficha;
 	int numero;//la n
 
 
@@ -54,4 +55,4 @@ public:
 	
 
 };
-extern casillas casilla[9][9];
+//extern casillas casilla[9][9];

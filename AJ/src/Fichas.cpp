@@ -1,6 +1,6 @@
 #include "Fichas.h"
 #include"casilla.h"
-#include "lib/ETSIDI.h"
+#include "ETSIDI.h"
 #include "casilla.cpp"
 #include"Peon.h"
 #include"Torre.h"
@@ -11,14 +11,14 @@
 #include <iostream>
 using namespace std;
 
-casillas::Fichas::Fichas(Nombrefichas tipo, int fila, int columna, char color) {
+Fichas::Fichas(Nombrefichas tipo, int fila, int columna, char color) {
 	tipo = Tipo;
 	fila = Fila;
 	columna = Columna;
 	color = Color;
 }
 
-casillas::Fichas::Fichas(){
+Fichas::Fichas(){
 	Tipo = Nombrefichas::VACIO;
 	Fila = 0;
 	Columna = 0;
@@ -139,31 +139,35 @@ void Fichas::movimiento() {
 	
 }
 */
-int casillas::Fichas::getFila() {
+int Fichas::getFila() {
 	return Fila;
 }
 
-int casillas::Fichas::getColumna() {
+int Fichas::getColumna() {
 	return Columna;
 }
-Nombrefichas casillas::Fichas::getFicha() {
+Nombrefichas Fichas::getFicha() {
 	return Tipo;
 }
-void casillas::Fichas::setFicha(Nombrefichas ficha)
+void Fichas::setFicha(Nombrefichas ficha)
 {
 	Tipo = ficha;
 }
 
-void casillas::Fichas::setPos(int fila, int columna) {
+void Fichas::setPos(int fila, int columna) {
 	fila = Fila;
 	columna = Columna;
 }
 
-void casillas::Fichas::dibujar() {
+void Fichas::setColor(char C) {
+	Color = C;
+}
+
+void Fichas::dibujar() {
 	
 }
 
-void casillas::Fichas::borrarcontenido() {
-	Fichas::setPos(30,30);
-	Fichas::Color = '\0';
+void Fichas::borrarcontenido() {
+	setPos(30,30);
+	Color = '\0';
 }

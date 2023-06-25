@@ -6,6 +6,7 @@
 #include"Alfil.h"
 #include"Rey.h"
 #include"Reina.h"
+#include"Tablero.h"
 #include<iostream>
 using namespace std;
 
@@ -15,8 +16,8 @@ void juego::limpiaramenazas()
 	{
 		for (int j = 0; j < 8; j++)
 		{
-			casilla[j][i].amenazablanca = false;
-			casilla[j][i].amenazanegra = false;
+			Tablero::Tablero::casilla[j][i].amenazablanca = false;
+			Tablero::Tablero::casilla[j][i].amenazanegra = false;
 		}
 	}
 }
@@ -34,24 +35,24 @@ void juego::amenazar(int bando)
 	{
 		for (int j = 1; j <= 8; j++)//bucle anidado para ver todo el tablero
 		{
-			if (casilla[j][i].bando == bando) //si es el mismo bando, declaramos las amenazas de ese color, cada vez que se haya un movimiento se hacen dos amenazar, uno por color)
+			if (Tablero::Tablero::casilla[j][i].bando == bando) //si es el mismo bando, declaramos las amenazas de ese color, cada vez que se haya un movimiento se hacen dos amenazar, uno por color)
 			{
-				if (casilla[j][i].clavada == false)//por tanto, solo amenazaran si no están clavadas
+				if (Tablero::Tablero::casilla[j][i].clavada == false)//por tanto, solo amenazaran si no están clavadas
 				{
 					
-					if (casilla[j][i].ficha.getFicha() == Nombrefichas::PEON)
+					if (Tablero::Tablero::casilla[j][i].ficha->getFicha() == Nombrefichas::PEON)
 						entry = 1;
-					if (casilla[j][i].ficha.getFicha() == Nombrefichas::CABALLO)
+					if (Tablero::Tablero::casilla[j][i].ficha->getFicha() == Nombrefichas::CABALLO)
 						entry = 2;
-					if (casilla[j][i].ficha.getFicha() == Nombrefichas::TORRE)
+					if (Tablero::Tablero::casilla[j][i].ficha->getFicha() == Nombrefichas::TORRE)
 						entry = 3;
-					if (casilla[j][i].ficha.getFicha() == Nombrefichas::ALFIL)
+					if (Tablero::Tablero::casilla[j][i].ficha->getFicha() == Nombrefichas::ALFIL)
 						entry = 4;
-					if (casilla[j][i].ficha.getFicha() == Nombrefichas::REINA)
+					if (Tablero::Tablero::casilla[j][i].ficha->getFicha() == Nombrefichas::REINA)
 						entry = 5;
-					if (casilla[j][i].ficha.getFicha() == Nombrefichas::REY)
+					if (Tablero::Tablero::casilla[j][i].ficha->getFicha() == Nombrefichas::REY)
 						entry = 6;
-					if (casilla[j][i].ficha.getFicha() == Nombrefichas::VACIO)
+					if (Tablero::Tablero::casilla[j][i].ficha->getFicha() == Nombrefichas::VACIO)
 						entry = 0;
 
 					switch (entry) //diferentes amenazas según el tipo de ficha
@@ -60,76 +61,76 @@ void juego::amenazar(int bando)
 					{
 						if (bando == 1)
 						{
-							if (casilla[j + 1][i + 1].bando != bando || casilla[j + 1][i + 1].bando == bando) //amenaza haya aliados o enemigos, pero solo amenaza en su zona de ataque
-								casilla[j + 1][i + 1].amenazablanca = true; //seria un amenazablanca=true; el bando 2 será que no está ocupada ni por blancas ni negras
-							if (casilla[j + 1][i - 1].bando != bando || casilla[j + 1][i - 1].bando == bando)
-								casilla[j + 1][i - 1].amenazablanca = true;
+							if (Tablero::Tablero::casilla[j + 1][i + 1].bando != bando || Tablero::Tablero::casilla[j + 1][i + 1].bando == bando) //amenaza haya aliados o enemigos, pero solo amenaza en su zona de ataque
+								Tablero::Tablero::casilla[j + 1][i + 1].amenazablanca = true; //seria un amenazablanca=true; el bando 2 será que no está ocupada ni por blancas ni negras
+							if (Tablero::Tablero::casilla[j + 1][i - 1].bando != bando || Tablero::Tablero::casilla[j + 1][i - 1].bando == bando)
+								Tablero::Tablero::casilla[j + 1][i - 1].amenazablanca = true;
 						}
 						if (bando == 0) //el peon es la unica pieza que según su bando ataca de forma distinta, "baja el tablero", ya que consideramos que estan arriba negras y abajo blancas
 						{
-							if (casilla[j - 1][i + 1].bando != bando || casilla[j - 1][i - 1].bando == bando) //amenaza haya aliados o enemigos, pero solo amenaza en su zona de ataque
-								casilla[j - 1][i + 1].amenazanegra = true; //seria un amenazanegra=true; el bando 2 será que no está ocupada ni por blancas ni negras
-							if (casilla[j - 1][i - 1].bando != bando || casilla[j - 1][i - 1].bando == bando)
-								casilla[j - 1][i + 1].amenazanegra = true;
+							if (Tablero::Tablero::casilla[j - 1][i + 1].bando != bando || Tablero::Tablero::casilla[j - 1][i - 1].bando == bando) //amenaza haya aliados o enemigos, pero solo amenaza en su zona de ataque
+								Tablero::casilla[j - 1][i + 1].amenazanegra = true; //seria un amenazanegra=true; el bando 2 será que no está ocupada ni por blancas ni negras
+							if (Tablero::casilla[j - 1][i - 1].bando != bando || Tablero::casilla[j - 1][i - 1].bando == bando)
+								Tablero::casilla[j - 1][i + 1].amenazanegra = true;
 						}
 					}
 					case 2://caballo
 					{
-						if (casilla[j + 2][i + 1].bando != bando || casilla[j + 2][i + 1].bando == bando)
+						if (Tablero::casilla[j + 2][i + 1].bando != bando || Tablero::casilla[j + 2][i + 1].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j + 2][i + 1].amenazablanca = true;
+								Tablero::casilla[j + 2][i + 1].amenazablanca = true;
 							if (bando == 0)
-								casilla[j + 2][i + 1].amenazanegra = true;
+								Tablero::casilla[j + 2][i + 1].amenazanegra = true;
 						}
-						if (casilla[j + 2][i - 1].bando != bando || casilla[j + 2][i - 1].bando == bando)
+						if (Tablero::casilla[j + 2][i - 1].bando != bando || Tablero::casilla[j + 2][i - 1].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j + 2][i - 1].amenazablanca = true;
+								Tablero::casilla[j + 2][i - 1].amenazablanca = true;
 							if (bando == 0)
-								casilla[j + 2][i - 1].amenazanegra = true;
+								Tablero::casilla[j + 2][i - 1].amenazanegra = true;
 						}
-						if (casilla[j - 2][i + 1].bando != bando || casilla[j - 2][i + 1].bando == bando)
+						if (Tablero::casilla[j - 2][i + 1].bando != bando || Tablero::casilla[j - 2][i + 1].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j - 2][i + 1].amenazablanca = true;
+								Tablero::casilla[j - 2][i + 1].amenazablanca = true;
 							if (bando == 0)
-								casilla[j - 2][i + 1].amenazanegra = true;
+								Tablero::casilla[j - 2][i + 1].amenazanegra = true;
 						}
-						if (casilla[j - 2][i - 1].bando != bando || casilla[j - 2][i - 1].bando == bando)
+						if (Tablero::casilla[j - 2][i - 1].bando != bando || Tablero::casilla[j - 2][i - 1].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j - 2][i - 1].amenazablanca = true;
+								Tablero::casilla[j - 2][i - 1].amenazablanca = true;
 							if (bando == 0)
-								casilla[j - 2][i - 1].amenazanegra = true;
+								Tablero::casilla[j - 2][i - 1].amenazanegra = true;
 						}
-						if (casilla[j + 1][i + 2].bando != bando || casilla[j + 1][i + 2].bando == bando)
+						if (Tablero::casilla[j + 1][i + 2].bando != bando || Tablero::casilla[j + 1][i + 2].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j + 1][i + 2].amenazablanca = true;
+								Tablero::casilla[j + 1][i + 2].amenazablanca = true;
 							if (bando == 0)
-								casilla[j + 1][i + 2].amenazanegra = true;
+								Tablero::casilla[j + 1][i + 2].amenazanegra = true;
 						}
-						if (casilla[j + 1][i - 2].bando != bando || casilla[j + 1][i - 2].bando == bando)
+						if (Tablero::casilla[j + 1][i - 2].bando != bando || Tablero::casilla[j + 1][i - 2].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j + 1][i - 2].amenazablanca = true;
+								Tablero::casilla[j + 1][i - 2].amenazablanca = true;
 							if (bando == 0)
-								casilla[j + 1][i - 2].amenazanegra = true;
+								Tablero::casilla[j + 1][i - 2].amenazanegra = true;
 						}
-						if (casilla[j - 1][i + 2].bando != bando || casilla[j - 1][i + 2].bando == bando)
+						if (Tablero::casilla[j - 1][i + 2].bando != bando || Tablero::casilla[j - 1][i + 2].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j - 1][i + 2].amenazablanca = true;
+								Tablero::casilla[j - 1][i + 2].amenazablanca = true;
 							if (bando == 0)
-								casilla[j - 1][i + 2].amenazanegra = true;
+								Tablero::casilla[j - 1][i + 2].amenazanegra = true;
 						}
-						if (casilla[j - 1][i - 2].bando != bando || casilla[j - 1][i - 2].bando == bando)
+						if (Tablero::casilla[j - 1][i - 2].bando != bando || Tablero::casilla[j - 1][i - 2].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j - 1][i - 2].amenazablanca = true;
+								Tablero::casilla[j - 1][i - 2].amenazablanca = true;
 							if (bando == 0)
-								casilla[j - 1][i - 2].amenazanegra = true;
+								Tablero::casilla[j - 1][i - 2].amenazanegra = true;
 						}
 					}
 					case 3://torre
@@ -137,19 +138,19 @@ void juego::amenazar(int bando)
 						//ARRIBA
 						for (int k = j + 1; k <= 8; k++)
 						{
-							if (casilla[k][i].bando != bando || casilla[k][i].bando == bando)
+							if (Tablero::casilla[k][i].bando != bando || Tablero::casilla[k][i].bando == bando)
 							{
 								if (bando == 1)
-									casilla[k][i].amenazablanca = true;
+									Tablero::casilla[k][i].amenazablanca = true;
 								if (bando == 0)
-									casilla[k][i].amenazanegra = true;
+									Tablero::casilla[k][i].amenazanegra = true;
 							}
-							if (casilla[k][i].bando == ob || casilla[k][i].bando == bando)
+							if (Tablero::casilla[k][i].bando == ob || Tablero::casilla[k][i].bando == bando)
 							{
 								if (bando == 1)
-									casilla[k][i].amenazablanca = true;
+									Tablero::casilla[k][i].amenazablanca = true;
 								if (bando == 0)
-									casilla[k][i].amenazanegra = true;
+									Tablero::casilla[k][i].amenazanegra = true;
 								k = 9;//si encuentra una ficha , amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 
@@ -157,19 +158,19 @@ void juego::amenazar(int bando)
 						//ABAJO
 						for (int k = j - 1; k >= 1; k--)
 						{
-							if (casilla[k][i].bando != bando || casilla[k][i].bando == bando)
+							if (Tablero::casilla[k][i].bando != bando || Tablero::casilla[k][i].bando == bando)
 							{
 								if (bando == 1)
-									casilla[k][i].amenazablanca = true;
+									Tablero::casilla[k][i].amenazablanca = true;
 								if (bando == 0)
-									casilla[k][i].amenazanegra = true;
+									Tablero::casilla[k][i].amenazanegra = true;
 							}
-							if (casilla[k][i].bando == ob || casilla[k][i].bando == bando)
+							if (Tablero::casilla[k][i].bando == ob || Tablero::casilla[k][i].bando == bando)
 							{
 								if (bando == 1)
-									casilla[k][i].amenazablanca = true;
+									Tablero::casilla[k][i].amenazablanca = true;
 								if (bando == 0)
-									casilla[k][i].amenazanegra = true;
+									Tablero::casilla[k][i].amenazanegra = true;
 								k = -1;//si encuentra una ficha , amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 
@@ -177,20 +178,20 @@ void juego::amenazar(int bando)
 						//IZQUIERDA
 						for (int k = i - 1; k >= 1; k--)
 						{
-							if (casilla[j][k].bando != bando || casilla[j][k].bando == bando)
+							if (Tablero::casilla[j][k].bando != bando || Tablero::casilla[j][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j][k].amenazablanca = true;
+									Tablero::casilla[j][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j][k].amenazanegra = true;
+									Tablero::casilla[j][k].amenazanegra = true;
 								k = -1;//si encuentra una ficha , amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
-							if (casilla[j][k].bando == ob || casilla[k][j].bando == bando)
+							if (Tablero::casilla[j][k].bando == ob || Tablero::casilla[k][j].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j][k].amenazablanca = true;
+									Tablero::casilla[j][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j][k].amenazanegra = true;
+									Tablero::casilla[j][k].amenazanegra = true;
 								k = -1;//si encuentra una ficha , amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 
@@ -198,19 +199,19 @@ void juego::amenazar(int bando)
 						//DERECHA
 						for (int k = i + 1; k <= 8; k++)
 						{
-							if (casilla[j][k].bando != bando || casilla[j][k].bando == bando)
+							if (Tablero::casilla[j][k].bando != bando || Tablero::casilla[j][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j][k].amenazablanca = true;
+									Tablero::casilla[j][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j][k].amenazanegra = true;
+									Tablero::casilla[j][k].amenazanegra = true;
 							}
-							if (casilla[j][k].bando == ob || casilla[j][k].bando == bando)
+							if (Tablero::casilla[j][k].bando == ob || Tablero::casilla[j][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j][k].amenazablanca = true;
+									Tablero::casilla[j][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j][k].amenazanegra = true;
+									Tablero::casilla[j][k].amenazanegra = true;
 								k = 9;//si encuentra una ficha , amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 
 							}
@@ -222,79 +223,79 @@ void juego::amenazar(int bando)
 						//ARRIBA DERECHA
 						for (int k = i + 1; k <= 8; k++)
 						{
-							if (casilla[j + (k - i)][k].bando != bando || casilla[j + (k - i)][k].bando == bando)
+							if (Tablero::casilla[j + (k - i)][k].bando != bando || Tablero::casilla[j + (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j + (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j + (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j + (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j + (k - i)][k].amenazanegra = true;
 
 							}
 
-							if (casilla[j + (k - i)][k].bando == ob || casilla[j + (k - i)][k].bando == bando)
+							if (Tablero::casilla[j + (k - i)][k].bando == ob || Tablero::casilla[j + (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j + (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j + (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j + (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j + (k - i)][k].amenazanegra = true;
 								k = 9;//si encuentra una ficha, sea blanca o negra, amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 						}
 						//ARRIBA IZQUIERDA
 						for (int k = i - 1; k >= 1; k--)
 						{
-							if (casilla[j - (k - i)][k].bando != bando || casilla[j - (k - i)][k].bando == bando)
+							if (Tablero::casilla[j - (k - i)][k].bando != bando || Tablero::casilla[j - (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j - (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j - (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j - (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j - (k - i)][k].amenazanegra = true;
 
 							}
-							if (casilla[j - (k - i)][k].bando == ob || casilla[j - (k - i)][k].bando == bando)
+							if (Tablero::casilla[j - (k - i)][k].bando == ob || Tablero::casilla[j - (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j - (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j - (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j - (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j - (k - i)][k].amenazanegra = true;
 								k = -1;//si encuentra una ficha, sea blanca o negra, amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 						}
 						//ABAJO DERECHA
 						for (int k = i + 1; k <= 8; k++)
 						{
-							if (casilla[j - (k - i)][k].bando != bando || casilla[j - (k - i)][k].bando == bando)
+							if (Tablero::casilla[j - (k - i)][k].bando != bando || Tablero::casilla[j - (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j - (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j - (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j - (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j - (k - i)][k].amenazanegra = true;
 							}
-							if (casilla[j - (k - i)][k].bando == ob || casilla[j - (k - i)][k].bando == bando)
+							if (Tablero::casilla[j - (k - i)][k].bando == ob || Tablero::casilla[j - (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j - (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j - (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j - (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j - (k - i)][k].amenazanegra = true;
 								k = 9;//si encuentra una ficha, sea blanca o negra, amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 						}
 						//ABAJO IZQUIERDA
 						for (int k = i - 1; k >= 1; k--)
 						{
-							if (casilla[j + (k - i)][k].bando != bando || casilla[j + (k - i)][k].bando == bando)
+							if (Tablero::casilla[j + (k - i)][k].bando != bando || Tablero::casilla[j + (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j + (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j + (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j + (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j + (k - i)][k].amenazanegra = true;
 							}
-							if (casilla[j + (k - i)][k].bando == ob || casilla[j + (k - i)][k].bando == bando)
+							if (Tablero::casilla[j + (k - i)][k].bando == ob || Tablero::casilla[j + (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j + (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j + (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j + (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j + (k - i)][k].amenazanegra = true;
 								k = -1;//si encuentra una ficha, sea blanca o negra, amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 						}
@@ -304,19 +305,19 @@ void juego::amenazar(int bando)
 						//ARRIBA
 						for (int k = j + 1; k <= 8; k++)
 						{
-							if (casilla[k][i].bando != bando || casilla[k][i].bando == bando)
+							if (Tablero::casilla[k][i].bando != bando || Tablero::casilla[k][i].bando == bando)
 							{
 								if (bando == 1)
-									casilla[k][i].amenazablanca = true;
+									Tablero::casilla[k][i].amenazablanca = true;
 								if (bando == 0)
-									casilla[k][i].amenazanegra = true;
+									Tablero::casilla[k][i].amenazanegra = true;
 							}
-							if (casilla[k][i].bando == ob || casilla[k][i].bando == bando)
+							if (Tablero::casilla[k][i].bando == ob || Tablero::casilla[k][i].bando == bando)
 							{
 								if (bando == 1)
-									casilla[k][i].amenazablanca = true;
+									Tablero::casilla[k][i].amenazablanca = true;
 								if (bando == 0)
-									casilla[k][i].amenazanegra = true;
+									Tablero::casilla[k][i].amenazanegra = true;
 								k = 9;//si encuentra una ficha , amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 
@@ -324,19 +325,19 @@ void juego::amenazar(int bando)
 						//ABAJO
 						for (int k = j - 1; k >= 1; k--)
 						{
-							if (casilla[k][i].bando != bando || casilla[k][i].bando == bando)
+							if (Tablero::casilla[k][i].bando != bando || Tablero::casilla[k][i].bando == bando)
 							{
 								if (bando == 1)
-									casilla[k][i].amenazablanca = true;
+									Tablero::casilla[k][i].amenazablanca = true;
 								if (bando == 0)
-									casilla[k][i].amenazanegra = true;
+									Tablero::casilla[k][i].amenazanegra = true;
 							}
-							if (casilla[k][i].bando == ob || casilla[k][i].bando == bando)
+							if (Tablero::casilla[k][i].bando == ob || Tablero::casilla[k][i].bando == bando)
 							{
 								if (bando == 1)
-									casilla[k][i].amenazablanca = true;
+									Tablero::casilla[k][i].amenazablanca = true;
 								if (bando == 0)
-									casilla[k][i].amenazanegra = true;
+									Tablero::casilla[k][i].amenazanegra = true;
 								k = -1;//si encuentra una ficha , amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 
@@ -344,20 +345,20 @@ void juego::amenazar(int bando)
 						//IZQUIERDA
 						for (int k = i - 1; k >= 1; k--)
 						{
-							if (casilla[j][k].bando != bando || casilla[j][k].bando == bando)
+							if (Tablero::casilla[j][k].bando != bando || Tablero::casilla[j][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j][k].amenazablanca = true;
+									Tablero::casilla[j][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j][k].amenazanegra = true;
+									Tablero::casilla[j][k].amenazanegra = true;
 								k = -1;//si encuentra una ficha , amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
-							if (casilla[j][k].bando == ob || casilla[k][j].bando == bando)
+							if (Tablero::casilla[j][k].bando == ob || Tablero::casilla[k][j].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j][k].amenazablanca = true;
+									Tablero::casilla[j][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j][k].amenazanegra = true;
+									Tablero::casilla[j][k].amenazanegra = true;
 								k = -1;//si encuentra una ficha , amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 
@@ -365,19 +366,19 @@ void juego::amenazar(int bando)
 						//DERECHA
 						for (int k = i + 1; k <= 8; k++)
 						{
-							if (casilla[j][k].bando != bando || casilla[j][k].bando == bando)
+							if (Tablero::casilla[j][k].bando != bando || Tablero::casilla[j][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j][k].amenazablanca = true;
+									Tablero::casilla[j][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j][k].amenazanegra = true;
+									Tablero::casilla[j][k].amenazanegra = true;
 							}
-							if (casilla[j][k].bando == ob || casilla[j][k].bando == bando)
+							if (Tablero::casilla[j][k].bando == ob || Tablero::casilla[j][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j][k].amenazablanca = true;
+									Tablero::casilla[j][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j][k].amenazanegra = true;
+									Tablero::casilla[j][k].amenazanegra = true;
 								k = 9;//si encuentra una ficha , amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 
 							}
@@ -386,79 +387,79 @@ void juego::amenazar(int bando)
 						//ARRIBA DERECHA
 						for (int k = i + 1; k <= 8; k++)
 						{
-							if (casilla[j + (k - i)][k].bando != bando || casilla[j + (k - i)][k].bando == bando)
+							if (Tablero::casilla[j + (k - i)][k].bando != bando || Tablero::casilla[j + (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j + (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j + (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j + (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j + (k - i)][k].amenazanegra = true;
 
 							}
 
-							if (casilla[j + (k - i)][k].bando == ob || casilla[j + (k - i)][k].bando == bando)
+							if (Tablero::casilla[j + (k - i)][k].bando == ob || Tablero::casilla[j + (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j + (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j + (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j + (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j + (k - i)][k].amenazanegra = true;
 								k = 9;//si encuentra una ficha, sea blanca o negra, amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 						}
 						//ARRIBA IZQUIERDA
 						for (int k = i - 1; k >= 1; k--)
 						{
-							if (casilla[j - (k - i)][k].bando != bando || casilla[j - (k - i)][k].bando == bando)
+							if (Tablero::casilla[j - (k - i)][k].bando != bando || Tablero::casilla[j - (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j - (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j - (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j - (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j - (k - i)][k].amenazanegra = true;
 
 							}
-							if (casilla[j - (k - i)][k].bando == ob || casilla[j - (k - i)][k].bando == bando)
+							if (Tablero::casilla[j - (k - i)][k].bando == ob || Tablero::casilla[j - (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j - (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j - (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j - (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j - (k - i)][k].amenazanegra = true;
 								k = -1;//si encuentra una ficha, sea blanca o negra, amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 						}
 						//ABAJO DERECHA
 						for (int k = i + 1; k <= 8; k++)
 						{
-							if (casilla[j - (k - i)][k].bando != bando || casilla[j - (k - i)][k].bando == bando)
+							if (Tablero::casilla[j - (k - i)][k].bando != bando || Tablero::casilla[j - (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j - (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j - (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j - (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j - (k - i)][k].amenazanegra = true;
 							}
-							if (casilla[j - (k - i)][k].bando == ob || casilla[j - (k - i)][k].bando == bando)
+							if (Tablero::casilla[j - (k - i)][k].bando == ob || Tablero::casilla[j - (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j - (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j - (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j - (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j - (k - i)][k].amenazanegra = true;
 								k = 9;//si encuentra una ficha, sea blanca o negra, amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 						}
 						//ABAJO IZQUIERDA
 						for (int k = i - 1; k >= 1; k--)
 						{
-							if (casilla[j + (k - i)][k].bando != bando || casilla[j + (k - i)][k].bando == bando)
+							if (Tablero::casilla[j + (k - i)][k].bando != bando || Tablero::casilla[j + (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j + (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j + (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j + (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j + (k - i)][k].amenazanegra = true;
 							}
-							if (casilla[j + (k - i)][k].bando == ob || casilla[j + (k - i)][k].bando == bando)
+							if (Tablero::casilla[j + (k - i)][k].bando == ob || Tablero::casilla[j + (k - i)][k].bando == bando)
 							{
 								if (bando == 1)
-									casilla[j + (k - i)][k].amenazablanca = true;
+									Tablero::casilla[j + (k - i)][k].amenazablanca = true;
 								if (bando == 0)
-									casilla[j + (k - i)][k].amenazanegra = true;
+									Tablero::casilla[j + (k - i)][k].amenazanegra = true;
 								k = -1;//si encuentra una ficha, sea blanca o negra, amenaza su posicion y sale del bucle, no amenazando a las que tenga la ficha detrás
 							}
 						}
@@ -466,64 +467,64 @@ void juego::amenazar(int bando)
 					}
 					case 6://rey
 					{
-						if (casilla[j][i + 1].bando != bando || casilla[j][i + 1].bando == bando)
+						if (Tablero::casilla[j][i + 1].bando != bando || Tablero::casilla[j][i + 1].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j][i + 1].amenazablanca = true;
+								Tablero::casilla[j][i + 1].amenazablanca = true;
 							if (bando == 0)
-								casilla[j][i + 1].amenazanegra = true;
+								Tablero::casilla[j][i + 1].amenazanegra = true;
 						}
-						if (casilla[j + 1][i + 1].bando != bando || casilla[j + 1][i + 1].bando == bando)
+						if (Tablero::casilla[j + 1][i + 1].bando != bando || Tablero::casilla[j + 1][i + 1].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j + 1][i + 1].amenazablanca = true;
+								Tablero::casilla[j + 1][i + 1].amenazablanca = true;
 							if (bando == 0)
-								casilla[j + 1][i + 1].amenazanegra = true;
+								Tablero::casilla[j + 1][i + 1].amenazanegra = true;
 						}
-						if (casilla[j - 1][i + 1].bando != bando || casilla[j - 1][i + 1].bando == bando)
+						if (Tablero::casilla[j - 1][i + 1].bando != bando || Tablero::casilla[j - 1][i + 1].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j - 1][i + 1].amenazablanca = true;
+								Tablero::casilla[j - 1][i + 1].amenazablanca = true;
 							if (bando == 0)
-								casilla[j - 1][i + 1].amenazanegra = true;
+								Tablero::casilla[j - 1][i + 1].amenazanegra = true;
 						}
-						if (casilla[j][i - 1].bando != bando || casilla[j][i - 1].bando == bando)
+						if (Tablero::casilla[j][i - 1].bando != bando || Tablero::casilla[j][i - 1].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j][i - 1].amenazablanca = true;
+								Tablero::casilla[j][i - 1].amenazablanca = true;
 							if (bando == 0)
-								casilla[j][i - 1].amenazanegra = true;
+								Tablero::casilla[j][i - 1].amenazanegra = true;
 						}
-						if (casilla[j + 1][i - 1].bando != bando || casilla[j + 1][i - 1].bando == bando)
+						if (Tablero::casilla[j + 1][i - 1].bando != bando || Tablero::casilla[j + 1][i - 1].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j + 1][i - 1].amenazablanca = true;
+								Tablero::casilla[j + 1][i - 1].amenazablanca = true;
 							if (bando == 0)
-								casilla[j + 1][i - 1].amenazanegra = true;
+								Tablero::casilla[j + 1][i - 1].amenazanegra = true;
 						}
-						if (casilla[j - 1][i - 1].bando != bando || casilla[j - 1][i - 1].bando == bando)
+						if (Tablero::casilla[j - 1][i - 1].bando != bando || Tablero::casilla[j - 1][i - 1].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j - 1][i - 1].amenazablanca = true;
+								Tablero::casilla[j - 1][i - 1].amenazablanca = true;
 							if (bando == 0)
-								casilla[j - 1][i - 1].amenazanegra = true;
+								Tablero::casilla[j - 1][i - 1].amenazanegra = true;
 						}
-						if (casilla[j + 1][i].bando != bando || casilla[j + 1][i].bando == bando)
+						if (Tablero::casilla[j + 1][i].bando != bando || Tablero::casilla[j + 1][i].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j + 1][i].amenazablanca = true;
+								Tablero::casilla[j + 1][i].amenazablanca = true;
 							if (bando == 0)
-								casilla[j + 1][i].amenazanegra = true;
+								Tablero::casilla[j + 1][i].amenazanegra = true;
 						}
-						if (casilla[j - 1][i].bando != bando || casilla[j - 1][i].bando == bando)
+						if (Tablero::casilla[j - 1][i].bando != bando || Tablero::casilla[j - 1][i].bando == bando)
 						{
 							if (bando == 1)
-								casilla[j - 1][i].amenazablanca = true;
+								Tablero::casilla[j - 1][i].amenazablanca = true;
 							if (bando == 0)
-								casilla[j - 1][i].amenazanegra = true;
+								Tablero::casilla[j - 1][i].amenazanegra = true;
 						}
 					}
-					case 0: {}//vacio,si no hay ninguna ficha en la casilla, obviamente desde esa casilla no surgirá ninguna amenaza
+					case 0: {}//vacio,si no hay ninguna ficha en la Tablero::casilla, obviamente desde esa Tablero::casilla no surgirá ninguna amenaza
 					}
 				}
 			}
@@ -534,52 +535,52 @@ void juego::amenazar(int bando)
 bool juego::clavadaficha(int bando, int ob, int i, int j)
 {
 
-	if (casilla[j][i].bando == bando)//se comprueba si la pieza en la casilla es del bando que estamos comprobando las clavadas
+	if (Tablero::casilla[j][i].bando == bando)//se comprueba si la pieza en la Tablero::casilla es del bando que estamos comprobando las clavadas
 	{
-		if (((casilla[j][i].amenazanegra == true) && ((casilla[j][i].bando == bando) && (bando == 1))) || (((casilla[j][i].amenazablanca == true) && (casilla[j][i].bando == bando)) && (bando == 0)))//en caso de que la casilla esté ocupada por tu bando y amenazada, comprobamos por donde la amenazan para ver si es una ficha con trayectoria
+		if (((Tablero::casilla[j][i].amenazanegra == true) && ((Tablero::casilla[j][i].bando == bando) && (bando == 1))) || (((Tablero::casilla[j][i].amenazablanca == true) && (Tablero::casilla[j][i].bando == bando)) && (bando == 0)))//en caso de que la Tablero::casilla esté ocupada por tu bando y amenazada, comprobamos por donde la amenazan para ver si es una ficha con trayectoria
 		{
 			//comprobamos si le amenazan por la derecha
 			for (int k = i + 1; k <= 8; k++)
 			{
-				if (((casilla[j][k].amenazanegra == false) && (bando == 1)) || ((casilla[j][k].amenazablanca == false) && (bando == 0)))
+				if (((Tablero::casilla[j][k].amenazanegra == false) && (bando == 1)) || ((Tablero::casilla[j][k].amenazablanca == false) && (bando == 0)))
 					k = 9;//si no está amenazado no comprueba el resto, evitando que confunda la amenaza de otra ficha con la de una torre
-				if (((casilla[j][k].amenazanegra == true) && (bando == 1)) || ((casilla[j][k].amenazablanca == true) && (bando == 0)))
-				{//comprueba si en la siguiente casilla está la torre/reina que amenaza
-					if (casilla[k + 1][j].ficha.getFicha() == Nombrefichas::TORRE || casilla[k + 1][j].ficha.getFicha() == Nombrefichas::REINA) //en caso que esté amenazado por una torre o reina, comprobamos si el rey está amenazado
+				if (((Tablero::casilla[j][k].amenazanegra == true) && (bando == 1)) || ((Tablero::casilla[j][k].amenazablanca == true) && (bando == 0)))
+				{//comprueba si en la siguiente Tablero::casilla está la torre/reina que amenaza
+					if (Tablero::casilla[k + 1][j].ficha->getFicha() == Nombrefichas::TORRE || Tablero::casilla[k + 1][j].ficha->getFicha() == Nombrefichas::REINA) //en caso que esté amenazado por una torre o reina, comprobamos si el rey está amenazado
 					{
 						for (int l = i; l >= 1; l--)//miramos a la izquierda de la ficha
 						{
-							if (casilla[l][j].ficha.getFicha() == Nombrefichas::ALFIL || casilla[l][j].ficha.getFicha() == Nombrefichas::CABALLO || casilla[l][j].ficha.getFicha() == Nombrefichas::PEON || casilla[l][j].ficha.getFicha() == Nombrefichas::REINA || casilla[l][j].ficha.getFicha() == Nombrefichas::TORRE)
+							if (Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::REINA || Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::TORRE)
 								l = -1;
-							if (casilla[l][j].ficha.getFicha() == Nombrefichas::REY)
+							if (Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::REY)
 								return true; //en caso de que sea el rey, estará clavada, si no es ni ficha de las nombradas o rey, el bucle no hará nada
 						}
 					}
-					if (casilla[k + 1][j].ficha.getFicha() == Nombrefichas::ALFIL || casilla[k + 1][j].ficha.getFicha() == Nombrefichas::CABALLO || casilla[k + 1][j].ficha.getFicha() == Nombrefichas::PEON || casilla[k + 1][j].ficha.getFicha() == Nombrefichas::REY)
+					if (Tablero::casilla[k + 1][j].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[k + 1][j].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[k + 1][j].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[k + 1][j].ficha->getFicha() == Nombrefichas::REY)
 						k = 9;
 				}
 			}
 			//comprobamos si le amenazan por la izquierda 
 			for (int k = i - 1; k >= 1; k--)
 			{
-				if (((casilla[k][j].amenazanegra == false) && (bando == 1)) || ((casilla[k][j].amenazablanca == false) && (bando == 0)))
-					k = -1;//si no está amenazado en alguna de las casillas intermedias no comprueba el resto, evitando que confunda la amenaza de otra ficha con la de una torre
-				if (((casilla[k][j].amenazanegra == true) && (bando == 1)) || ((casilla[k][j].amenazablanca == true) && (bando == 0)))
+				if (((Tablero::casilla[k][j].amenazanegra == false) && (bando == 1)) || ((Tablero::casilla[k][j].amenazablanca == false) && (bando == 0)))
+					k = -1;//si no está amenazado en alguna de las Tablero::casillas intermedias no comprueba el resto, evitando que confunda la amenaza de otra ficha con la de una torre
+				if (((Tablero::casilla[k][j].amenazanegra == true) && (bando == 1)) || ((Tablero::casilla[k][j].amenazablanca == true) && (bando == 0)))
 				{
-					if (casilla[k - 1][j].ficha.getFicha() == Nombrefichas::TORRE || casilla[k - 1][j].ficha.getFicha() == Nombrefichas::REINA) //en caso que esté amenazado por una torre o reina, comprobamos si el rey está amenazado
+					if (Tablero::casilla[k - 1][j].ficha->getFicha() == Nombrefichas::TORRE || Tablero::casilla[k - 1][j].ficha->getFicha() == Nombrefichas::REINA) //en caso que esté amenazado por una torre o reina, comprobamos si el rey está amenazado
 					{
 						for (int l = i + 1; l <= 8; l++)//miramos a la derecha de la ficha
 						{
-							if (casilla[l][j].ficha.getFicha() == Nombrefichas::ALFIL || casilla[l][j].ficha.getFicha() == Nombrefichas::CABALLO || casilla[l][j].ficha.getFicha() == Nombrefichas::PEON || casilla[l][j].ficha.getFicha() == Nombrefichas::REINA || casilla[l][j].ficha.getFicha() == Nombrefichas::TORRE)
+							if (Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::REINA || Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::TORRE)
 								l = 9;
-							if ((casilla[l][j].ficha.getFicha() == Nombrefichas::REY) && (casilla[l][j].bando == bando))
+							if ((Tablero::casilla[l][j].ficha->getFicha() == Nombrefichas::REY) && (Tablero::casilla[l][j].bando == bando))
 							{
 								return true;
 							}
 
 						}
 					}
-					if (casilla[k - 1][j].ficha.getFicha() == Nombrefichas::ALFIL || casilla[k - 1][j].ficha.getFicha() == Nombrefichas::CABALLO || casilla[k - 1][j].ficha.getFicha() == Nombrefichas::PEON || casilla[k - 1][j].ficha.getFicha() == Nombrefichas::REY)
+					if (Tablero::casilla[k - 1][j].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[k - 1][j].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[k - 1][j].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[k - 1][j].ficha->getFicha() == Nombrefichas::REY)
 						k = -1;//al llegar a una ficha que bloquea se deja de mirar esa direccion
 
 				}
@@ -587,24 +588,24 @@ bool juego::clavadaficha(int bando, int ob, int i, int j)
 			//comprobamos si le amenazan por encima 
 			for (int k = j + 1; k <= 8; k++)
 			{
-				if (((casilla[k][i].amenazanegra == false) && (bando == 1)) || ((casilla[k][i].amenazablanca == false) && (bando == 0)))
+				if (((Tablero::casilla[k][i].amenazanegra == false) && (bando == 1)) || ((Tablero::casilla[k][i].amenazablanca == false) && (bando == 0)))
 					k = 9;//si no está amenazado no comprueba el resto, evitando que confunda la amenaza de otra ficha con la de una reina o torre
-				if (((casilla[k][i].amenazanegra == true) && (bando == 1)) || ((casilla[k][i].amenazablanca == true) && (bando == 0)))
+				if (((Tablero::casilla[k][i].amenazanegra == true) && (bando == 1)) || ((Tablero::casilla[k][i].amenazablanca == true) && (bando == 0)))
 				{
-					if (((casilla[k + 1][i].ficha.getFicha() == Nombrefichas::TORRE) && (casilla[k - 1][i].bando == ob)) || ((casilla[k - 1][i].ficha.getFicha() == Nombrefichas::REINA) && (casilla[k - 1][i].bando == ob))) //en caso que esté amenazado por una torre o reina, comprobamos si el rey está amenazado
+					if (((Tablero::casilla[k + 1][i].ficha->getFicha() == Nombrefichas::TORRE) && (Tablero::casilla[k - 1][i].bando == ob)) || ((Tablero::casilla[k - 1][i].ficha->getFicha() == Nombrefichas::REINA) && (Tablero::casilla[k - 1][i].bando == ob))) //en caso que esté amenazado por una torre o reina, comprobamos si el rey está amenazado
 					{
 						for (int l = j - 1; l >= 1; l--)//miramos por debajo de la ficha
 						{
-							if (casilla[l][i].ficha.getFicha() == Nombrefichas::ALFIL || casilla[l][i].ficha.getFicha() == Nombrefichas::CABALLO || casilla[l][i].ficha.getFicha() == Nombrefichas::PEON || casilla[l][i].ficha.getFicha() == Nombrefichas::REINA || casilla[l][i].ficha.getFicha() == Nombrefichas::TORRE)
+							if (Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::REINA || Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::TORRE)
 								l = -1;
-							if (casilla[l][i].ficha.getFicha() == Nombrefichas::REY)
+							if (Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::REY)
 							{
 								return true;
 							}
 
 						}
 					}
-					if (casilla[k + 1][i].ficha.getFicha() == Nombrefichas::ALFIL || casilla[k - 1][i].ficha.getFicha() == Nombrefichas::CABALLO || casilla[k - 1][i].ficha.getFicha() == Nombrefichas::PEON || casilla[k - 1][i].ficha.getFicha() == Nombrefichas::REY)
+					if (Tablero::casilla[k + 1][i].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[k - 1][i].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[k - 1][i].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[k - 1][i].ficha->getFicha() == Nombrefichas::REY)
 					{
 						k = 9;//al llegar a una ficha que bloquea se deja de mirar esa direccion
 					}
@@ -613,24 +614,24 @@ bool juego::clavadaficha(int bando, int ob, int i, int j)
 			//comprobamos si le amenazan por debajo
 			for (int k = j - 1; k >= 1; k--)
 			{
-				if (((casilla[k][i].amenazanegra == false) && (bando == 1)) || ((casilla[k][i].amenazablanca == false) && (bando == 0)))
+				if (((Tablero::casilla[k][i].amenazanegra == false) && (bando == 1)) || ((Tablero::casilla[k][i].amenazablanca == false) && (bando == 0)))
 					k = -1;//si no está amenazado no comprueba el resto, evitando que confunda la amenaza de otra ficha con la de una reina o torre
-				if (((casilla[k][i].amenazanegra == true) && (bando == 1)) || ((casilla[k][i].amenazablanca == true) && (bando == 0)))
+				if (((Tablero::casilla[k][i].amenazanegra == true) && (bando == 1)) || ((Tablero::casilla[k][i].amenazablanca == true) && (bando == 0)))
 				{
-					if (((casilla[k - 1][i].ficha.getFicha() == Nombrefichas::TORRE) && (casilla[k - 1][i].bando == ob)) || ((casilla[k - 1][i].ficha.getFicha() == Nombrefichas::REINA) && (casilla[k - 1][i].bando == ob))) //en caso que esté amenazado por una torre o reina, comprobamos si el rey está amenazado
+					if (((Tablero::casilla[k - 1][i].ficha->getFicha() == Nombrefichas::TORRE) && (Tablero::casilla[k - 1][i].bando == ob)) || ((Tablero::casilla[k - 1][i].ficha->getFicha() == Nombrefichas::REINA) && (Tablero::casilla[k - 1][i].bando == ob))) //en caso que esté amenazado por una torre o reina, comprobamos si el rey está amenazado
 					{
 						for (int l = j + 1; l <= 8; l++)//miramos por encima de la ficha
 						{
-							if (casilla[l][i].ficha.getFicha() == Nombrefichas::ALFIL || casilla[l][i].ficha.getFicha() == Nombrefichas::CABALLO || casilla[l][i].ficha.getFicha() == Nombrefichas::PEON || casilla[l][i].ficha.getFicha() == Nombrefichas::REINA || casilla[l][i].ficha.getFicha() == Nombrefichas::TORRE)
+							if (Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::REINA || Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::TORRE)
 								l = 9;
-							if ((casilla[l][i].ficha.getFicha() == Nombrefichas::REY) && (casilla[l][j].bando == bando))
+							if ((Tablero::casilla[l][i].ficha->getFicha() == Nombrefichas::REY) && (Tablero::casilla[l][j].bando == bando))
 							{
 								return true;
 							}
 
 						}
 					}
-					if (casilla[k - 1][i].ficha.getFicha() == Nombrefichas::ALFIL || casilla[k - 1][i].ficha.getFicha() == Nombrefichas::CABALLO || casilla[k - 1][i].ficha.getFicha() == Nombrefichas::PEON || casilla[k - 1][i].ficha.getFicha() == Nombrefichas::REY)
+					if (Tablero::casilla[k - 1][i].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[k - 1][i].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[k - 1][i].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[k - 1][i].ficha->getFicha() == Nombrefichas::REY)
 					{
 						k = -1;//al llegar a una ficha que bloquea se deja de mirar esa direccion
 					}
@@ -639,23 +640,23 @@ bool juego::clavadaficha(int bando, int ob, int i, int j)
 			//comprobamos si le amenazan por la diagonal inferior izquierda
 			for (int k = i - 1; k >= 1; k--)
 			{
-				if (((casilla[j - (i - k)][k].amenazanegra == false) && (bando == 1)) || ((casilla[j - (i - k)][k].amenazablanca == false) && (bando == 0)))
+				if (((Tablero::casilla[j - (i - k)][k].amenazanegra == false) && (bando == 1)) || ((Tablero::casilla[j - (i - k)][k].amenazablanca == false) && (bando == 0)))
 					k = -1;//si no está amenazado no comprueba el resto, evitando que confunda la amenaza de otra ficha con la de una reina o alfil
-				if (((casilla[j - (i - k)][k].amenazanegra == true) && (bando == 1)) || ((casilla[j - (i - k)][k].amenazablanca == true) && (bando == 0)))
-				{//comprueba si en la siguiente casilla está el alfil/reina que amenaza
-					if (((casilla[j - (i - k)][k - 1].ficha.getFicha() == Nombrefichas::ALFIL) && (casilla[j - (i - k)][k - 1].bando == ob)) || ((casilla[j - (i - k)][k - 1].ficha.getFicha() == Nombrefichas::REINA) && (casilla[j - (i - k)][k - 1].bando == ob))) //en caso que esté amenazado por un alfil o reina, comprobamos si el rey está amenazado
+				if (((Tablero::casilla[j - (i - k)][k].amenazanegra == true) && (bando == 1)) || ((Tablero::casilla[j - (i - k)][k].amenazablanca == true) && (bando == 0)))
+				{//comprueba si en la siguiente Tablero::casilla está el alfil/reina que amenaza
+					if (((Tablero::casilla[j - (i - k)][k - 1].ficha->getFicha() == Nombrefichas::ALFIL) && (Tablero::casilla[j - (i - k)][k - 1].bando == ob)) || ((Tablero::casilla[j - (i - k)][k - 1].ficha->getFicha() == Nombrefichas::REINA) && (Tablero::casilla[j - (i - k)][k - 1].bando == ob))) //en caso que esté amenazado por un alfil o reina, comprobamos si el rey está amenazado
 					{
 						for (int l = i + 1; l <= 8; l++)//miramos arriba a la derecha
 						{
-							if (casilla[j + (l - i)][l].ficha.getFicha() == Nombrefichas::ALFIL || casilla[j + (l - i)][l].ficha.getFicha() == Nombrefichas::CABALLO || casilla[j + (l - i)][l].ficha.getFicha() == Nombrefichas::PEON || casilla[j + (l - i)][l].ficha.getFicha() == Nombrefichas::REINA || casilla[j + (l - i)][l].ficha.getFicha() == Nombrefichas::TORRE)
+							if (Tablero::casilla[j + (l - i)][l].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[j + (l - i)][l].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[j + (l - i)][l].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[j + (l - i)][l].ficha->getFicha() == Nombrefichas::REINA || Tablero::casilla[j + (l - i)][l].ficha->getFicha() == Nombrefichas::TORRE)
 								l = 9; //está bloqueado el camino, asi que sale del bucle
-							if ((casilla[j + (l - i)][l].ficha.getFicha() == Nombrefichas::REY) && (casilla[j + (l - i)][l].bando == bando))
+							if ((Tablero::casilla[j + (l - i)][l].ficha->getFicha() == Nombrefichas::REY) && (Tablero::casilla[j + (l - i)][l].bando == bando))
 							{
 								return true;
 							}
 						}
 					}
-					if (casilla[j - (i - k) - 1][k - 1].ficha.getFicha() == Nombrefichas::TORRE || casilla[j - (i - k) - 1][k - 1].ficha.getFicha() == Nombrefichas::CABALLO || casilla[j - (i - k) - 1][k - 1].ficha.getFicha() == Nombrefichas::PEON || casilla[j - (i - k) - 1][k - 1].ficha.getFicha() == Nombrefichas::REY)
+					if (Tablero::casilla[j - (i - k) - 1][k - 1].ficha->getFicha() == Nombrefichas::TORRE || Tablero::casilla[j - (i - k) - 1][k - 1].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[j - (i - k) - 1][k - 1].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[j - (i - k) - 1][k - 1].ficha->getFicha() == Nombrefichas::REY)
 					{
 						k = -1;//al llegar a una ficha que bloquea se deja de mirar esa direccion
 					}
@@ -664,23 +665,23 @@ bool juego::clavadaficha(int bando, int ob, int i, int j)
 			//comprobamos si le amenazan por la diagonal inferior derecha
 			for (int k = i + 1; k <= 8; k++)
 			{
-				if (((casilla[j - (k - i)][k].amenazanegra == false) && (bando == 1)) || ((casilla[j - (k - i)][k].amenazablanca == false) && (bando == 0)))
+				if (((Tablero::casilla[j - (k - i)][k].amenazanegra == false) && (bando == 1)) || ((Tablero::casilla[j - (k - i)][k].amenazablanca == false) && (bando == 0)))
 					k = 9;//si no está amenazado no comprueba el resto, evitando que confunda la amenaza de otra ficha con la de una reina o alfil
-				if (((casilla[j - (k - i)][k].amenazanegra == true) && (bando == 1)) || ((casilla[j - (k - i)][k].amenazablanca == true) && (bando == 0)))
-				{//comprueba si en la siguiente casilla está el alfil/reina que amenaza
-					if (casilla[j - (k - i) - 1][k + 1].ficha.getFicha() == Nombrefichas::ALFIL || casilla[j - (k - i) - 1][k + 1].ficha.getFicha() == Nombrefichas::REINA) //en caso que esté amenazado por un alfil o reina, comprobamos si el rey está amenazado
+				if (((Tablero::casilla[j - (k - i)][k].amenazanegra == true) && (bando == 1)) || ((Tablero::casilla[j - (k - i)][k].amenazablanca == true) && (bando == 0)))
+				{//comprueba si en la siguiente Tablero::casilla está el alfil/reina que amenaza
+					if (Tablero::casilla[j - (k - i) - 1][k + 1].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[j - (k - i) - 1][k + 1].ficha->getFicha() == Nombrefichas::REINA) //en caso que esté amenazado por un alfil o reina, comprobamos si el rey está amenazado
 					{
 						for (int l = i - 1; l >= 1; l--)//miramos arriba a izquierda
 						{
-							if (casilla[j + (i - l)][l].ficha.getFicha() == Nombrefichas::ALFIL || casilla[j + (i - l)][l].ficha.getFicha() == Nombrefichas::CABALLO || casilla[j + (i - l)][l].ficha.getFicha() == Nombrefichas::PEON || casilla[j + (i - l)][l].ficha.getFicha() == Nombrefichas::REINA || casilla[j + (i - l)][l].ficha.getFicha() == Nombrefichas::TORRE)
+							if (Tablero::casilla[j + (i - l)][l].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[j + (i - l)][l].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[j + (i - l)][l].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[j + (i - l)][l].ficha->getFicha() == Nombrefichas::REINA || Tablero::casilla[j + (i - l)][l].ficha->getFicha() == Nombrefichas::TORRE)
 								l = -1; //está bloqueado el camino, asi que sale del bucle
-							if ((casilla[j + (i - l)][l].ficha.getFicha() == Nombrefichas::REY) && (casilla[j + (i - l)][l].bando == bando))
+							if ((Tablero::casilla[j + (i - l)][l].ficha->getFicha() == Nombrefichas::REY) && (Tablero::casilla[j + (i - l)][l].bando == bando))
 							{
 								return true;
 							}
 						}
 					}
-					if (casilla[j - (k - i) - 1][k + 1].ficha.getFicha() == Nombrefichas::TORRE || casilla[j - (k - i) - 1][k + 1].ficha.getFicha() == Nombrefichas::CABALLO || casilla[j - (k - i) - 1][k + 1].ficha.getFicha() == Nombrefichas::PEON || ((casilla[j - (k - i) - 1][k + 1].ficha.getFicha() == Nombrefichas::REY) && (casilla[j - (k - i) - 1][k + 1].bando == ob)))
+					if (Tablero::casilla[j - (k - i) - 1][k + 1].ficha->getFicha() == Nombrefichas::TORRE || Tablero::casilla[j - (k - i) - 1][k + 1].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[j - (k - i) - 1][k + 1].ficha->getFicha() == Nombrefichas::PEON || ((Tablero::casilla[j - (k - i) - 1][k + 1].ficha->getFicha() == Nombrefichas::REY) && (Tablero::casilla[j - (k - i) - 1][k + 1].bando == ob)))
 					{
 						k = 9;//al llegar a una ficha que bloquea se deja de mirar esa direccion
 					}
@@ -689,25 +690,25 @@ bool juego::clavadaficha(int bando, int ob, int i, int j)
 			//comprobamos si le amenazan por la diagonal superior izquierda
 			for (int k = i - 1; k >= 1; k--)
 			{
-				if (((casilla[j + (i - k)][k].amenazanegra == false) && (bando == 1)) || ((casilla[j + (i - k)][k].amenazablanca == false) && (bando == 0)))
+				if (((Tablero::casilla[j + (i - k)][k].amenazanegra == false) && (bando == 1)) || ((Tablero::casilla[j + (i - k)][k].amenazablanca == false) && (bando == 0)))
 					k = -1;//si no está amenazado no comprueba el resto, evitando que confunda la amenaza de otra ficha con la de una reina o alfil
-				if (((casilla[j + (i - k)][k].amenazanegra == true) && (bando == 1)) || ((casilla[j + (i - k)][k].amenazablanca == true) && (bando == 0)))
-				{//comprueba si en la siguiente casilla está el alfil/reina que amenaza
-					if (casilla[j + (i - k) + 1][k - 1].ficha.getFicha() == Nombrefichas::ALFIL || casilla[j + (i - k) + 1][k - 1].ficha.getFicha() == Nombrefichas::REINA) //en caso que esté amenazado por un alfil o reina, comprobamos si el rey está amenazado
+				if (((Tablero::casilla[j + (i - k)][k].amenazanegra == true) && (bando == 1)) || ((Tablero::casilla[j + (i - k)][k].amenazablanca == true) && (bando == 0)))
+				{//comprueba si en la siguiente Tablero::casilla está el alfil/reina que amenaza
+					if (Tablero::casilla[j + (i - k) + 1][k - 1].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[j + (i - k) + 1][k - 1].ficha->getFicha() == Nombrefichas::REINA) //en caso que esté amenazado por un alfil o reina, comprobamos si el rey está amenazado
 					{
 						for (int l = i + 1; l <= 8; l++)//miramos abajo a la derecha
 						{
-							if (casilla[j - (l - i)][l].ficha.getFicha() == Nombrefichas::ALFIL || casilla[j - (l - i)][l].ficha.getFicha() == Nombrefichas::CABALLO || casilla[j - (l - i)][l].ficha.getFicha() == Nombrefichas::PEON || casilla[j - (l - i)][l].ficha.getFicha() == Nombrefichas::REINA || casilla[j - (l - i)][l].ficha.getFicha() == Nombrefichas::TORRE)
+							if (Tablero::casilla[j - (l - i)][l].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[j - (l - i)][l].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[j - (l - i)][l].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[j - (l - i)][l].ficha->getFicha() == Nombrefichas::REINA || Tablero::casilla[j - (l - i)][l].ficha->getFicha() == Nombrefichas::TORRE)
 								l = 9; //está bloqueado el camino, asi que sale del bucle
-							if ((casilla[j - (l - i)][l].ficha.getFicha() == Nombrefichas::REY) && (casilla[j - (l - i)][l].bando == bando))
+							if ((Tablero::casilla[j - (l - i)][l].ficha->getFicha() == Nombrefichas::REY) && (Tablero::casilla[j - (l - i)][l].bando == bando))
 							{
 								return true;
 							}
 						}
 					}
-					if (casilla[j + (i - k) + 1][k - 1].ficha.getFicha() == Nombrefichas::TORRE || casilla[j + (i - k) + 1][k - 1].ficha.getFicha() == Nombrefichas::CABALLO || casilla[j + (i - k) + 1][k - 1].ficha.getFicha() == Nombrefichas::PEON || casilla[j + (i - k) + 1][k - 1].ficha.getFicha() == Nombrefichas::REY)
+					if (Tablero::casilla[j + (i - k) + 1][k - 1].ficha->getFicha() == Nombrefichas::TORRE || Tablero::casilla[j + (i - k) + 1][k - 1].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[j + (i - k) + 1][k - 1].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[j + (i - k) + 1][k - 1].ficha->getFicha() == Nombrefichas::REY)
 					{
-						casilla[j][i].clavada = false; //añadido para evitar coincidencias en las que pueda parecer que está amenazado por este tipo de pieza pero haya un enemigo distinto bloqueando el camino
+						Tablero::casilla[j][i].clavada = false; //añadido para evitar coincidencias en las que pueda parecer que está amenazado por este tipo de pieza pero haya un enemigo distinto bloqueando el camino
 						k = -1;//al llegar a una ficha que bloquea se deja de mirar esa direccion
 					}
 				}
@@ -715,23 +716,23 @@ bool juego::clavadaficha(int bando, int ob, int i, int j)
 			//comprobamos si le amenazan por la diagonal superior derecha
 			for (int k = i + 1; k <= 8; k++)
 			{
-				if (((casilla[j + (k - i)][k].amenazanegra == false) && (bando == 1)) || ((casilla[j + (k - i)][k].amenazablanca == false) && (bando == 0)))
+				if (((Tablero::casilla[j + (k - i)][k].amenazanegra == false) && (bando == 1)) || ((Tablero::casilla[j + (k - i)][k].amenazablanca == false) && (bando == 0)))
 					k = 9;//si no está amenazado no comprueba el resto, evitando que confunda la amenaza de otra ficha con la de una reina o alfil
-				if (((casilla[j + (k - i)][k].amenazanegra == true) && (bando == 1)) || ((casilla[j + (k - i)][k].amenazablanca == true) && (bando == 0)))
-				{//comprueba si en la siguiente casilla está el alfil/reina que amenaza
-					if (((casilla[j + (k - i) + 1][k + 1].ficha.getFicha() == Nombrefichas::ALFIL) && (casilla[j + (k - i) + 1][k + 1].bando == ob)) || ((casilla[j + (k - i) + 1][k + 1].ficha.getFicha() == Nombrefichas::ALFIL) && (casilla[j + (k - i) + 1][k + 1].bando == ob))) //en caso que esté amenazado por un alfil o reina, comprobamos si el rey está amenazado
+				if (((Tablero::casilla[j + (k - i)][k].amenazanegra == true) && (bando == 1)) || ((Tablero::casilla[j + (k - i)][k].amenazablanca == true) && (bando == 0)))
+				{//comprueba si en la siguiente Tablero::casilla está el alfil/reina que amenaza
+					if (((Tablero::casilla[j + (k - i) + 1][k + 1].ficha->getFicha() == Nombrefichas::ALFIL) && (Tablero::casilla[j + (k - i) + 1][k + 1].bando == ob)) || ((Tablero::casilla[j + (k - i) + 1][k + 1].ficha->getFicha() == Nombrefichas::ALFIL) && (Tablero::casilla[j + (k - i) + 1][k + 1].bando == ob))) //en caso que esté amenazado por un alfil o reina, comprobamos si el rey está amenazado
 					{//Si está la amenaza, comprueba detras de la pieza para ver si esta tu rey y por tanto estas clavada
 						for (int l = i - 1; l >= 1; l--)//miramos abajo a la izquierda
 						{
-							if (casilla[j - (i - l)][l].ficha.getFicha() == Nombrefichas::ALFIL || casilla[j - (i - l)][l].ficha.getFicha() == Nombrefichas::CABALLO || casilla[j - (i - l)][l].ficha.getFicha() == Nombrefichas::PEON || casilla[j - (i - l)][l].ficha.getFicha() == Nombrefichas::REINA || casilla[j - (i - l)][l].ficha.getFicha() == Nombrefichas::TORRE)
+							if (Tablero::casilla[j - (i - l)][l].ficha->getFicha() == Nombrefichas::ALFIL || Tablero::casilla[j - (i - l)][l].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[j - (i - l)][l].ficha->getFicha() == Nombrefichas::PEON || Tablero::casilla[j - (i - l)][l].ficha->getFicha() == Nombrefichas::REINA || Tablero::casilla[j - (i - l)][l].ficha->getFicha() == Nombrefichas::TORRE)
 								l = -1; //está bloqueado el camino, asi que sale del bucle
-							if ((casilla[j - (i - l)][l].ficha.getFicha() == Nombrefichas::REY) && (casilla[j - (i - l)][l].bando == bando))//si hay un rey, del color de tus fichas, está clavada
+							if ((Tablero::casilla[j - (i - l)][l].ficha->getFicha() == Nombrefichas::REY) && (Tablero::casilla[j - (i - l)][l].bando == bando))//si hay un rey, del color de tus fichas, está clavada
 							{
 								return true;
 							}
 						}
 					}
-					if (casilla[j + (k - i) + 1][k + 1].ficha.getFicha() == Nombrefichas::TORRE || casilla[j + (k - i) + 1][k + 1].ficha.getFicha() == Nombrefichas::CABALLO || casilla[j + (k - i) + 1][k + 1].ficha.getFicha() == Nombrefichas::PEON || ((casilla[j + (k - i) + 1][k + 1].ficha.getFicha() == Nombrefichas::REY) && (casilla[j + (k - i) + 1][k + 1].bando == ob)))//con esta ultima cond evitamos que confunda el rey atacante con el tuyo
+					if (Tablero::casilla[j + (k - i) + 1][k + 1].ficha->getFicha() == Nombrefichas::TORRE || Tablero::casilla[j + (k - i) + 1][k + 1].ficha->getFicha() == Nombrefichas::CABALLO || Tablero::casilla[j + (k - i) + 1][k + 1].ficha->getFicha() == Nombrefichas::PEON || ((Tablero::casilla[j + (k - i) + 1][k + 1].ficha->getFicha() == Nombrefichas::REY) && (Tablero::casilla[j + (k - i) + 1][k + 1].bando == ob)))//con esta ultima cond evitamos que confunda el rey atacante con el tuyo
 					{
 						//añadido para evitar coincidencias en las que pueda parecer que está amenazado por este tipo de pieza pero haya un enemigo distinto bloqueando el camino
 						k = 9;//al llegar a una ficha que bloquea se deja de mirar esa direccion
@@ -755,10 +756,10 @@ void juego::clavada(int bando)
 		ob = 1;
 	for (int i = 1; i <= 8; i++)
 	{
-		for (int j = 1; j <= 8; j++)//con estos bucles anidados comprobaremos en todas las casillas del tablero si la pieza está amenazada
+		for (int j = 1; j <= 8; j++)//con estos bucles anidados comprobaremos en todas las Tablero::casillas del tablero si la pieza está amenazada
 		{
-			resultado = clavadaficha(bando, ob, i, j); //usando esta estructura conseguimos que en el momento en el que resulte como clavada salga del bucle y pase a la siguiente casilla
-			casilla[j][i].clavada = resultado;
+			resultado = clavadaficha(bando, ob, i, j); //usando esta estructura conseguimos que en el momento en el que resulte como clavada salga del bucle y pase a la siguiente Tablero::casilla
+			Tablero::casilla[j][i].clavada = resultado;
 		}
 	}
 }
@@ -782,17 +783,17 @@ void juego::movimiento() {
 		else {
 			for (int i = 1; i < 10; i++) {
 				for (int j = 1; j < 10; j++) {
-					if (casilla[i][j].f == filaini && casilla[i][j].c == columnaini && casilla[i][j].estado == 0) {
+					if (Tablero::casilla[i][j].f == filaini && Tablero::casilla[i][j].c == columnaini && Tablero::casilla[i][j].estado == 0) {
 						"No hay ninguna ficha en dichas coordenadas";
 					}
-					if (casilla[i][j].f == filaini && casilla[i][j].c == columnaini && casilla[i][j].estado == 1)
+					if (Tablero::casilla[i][j].f == filaini && Tablero::casilla[i][j].c == columnaini && Tablero::casilla[i][j].estado == 1)
 						break;
 				}
 			}
 		}
 
-	} while (filaini > 8 || columnaini > 8 || filaini < 0 || columnaini < 0 || casilla[filaini][columnaini].estado == 0);
-	//Así nos aseguramos que las coordenadas introducidas son correctas, están dentro del tablero y hay una ficha en dicha casilla
+	} while (filaini > 8 || columnaini > 8 || filaini < 0 || columnaini < 0 || Tablero::casilla[filaini][columnaini].estado == 0);
+	//Así nos aseguramos que las coordenadas introducidas son correctas, están dentro del tablero y hay una ficha en dicha Tablero::casilla
 
 
 
@@ -803,23 +804,23 @@ void juego::movimiento() {
 		cin >> filafin >> columnafin;
 	} while (filafin > 8 || columnafin > 8 || filafin < 0 || columnafin < 0);//Así nos aseguramos que las coordenadas introducidas son correctas y están dentro del tablero
 
-	if (casilla[filaini][columnaini].ficha.getFicha() == Nombrefichas::ALFIL)
+	if (Tablero::casilla[filaini][columnaini].ficha->getFicha() == Nombrefichas::ALFIL)
 		r = 1;
-	if (casilla[filaini][columnaini].ficha.getFicha() == Nombrefichas::TORRE)
+	if (Tablero::casilla[filaini][columnaini].ficha->getFicha() == Nombrefichas::TORRE)
 		r = 2;
-	if (casilla[filaini][columnaini].ficha.getFicha() == Nombrefichas::CABALLO)
+	if (Tablero::casilla[filaini][columnaini].ficha->getFicha() == Nombrefichas::CABALLO)
 		r = 3;
-	if (casilla[filaini][columnaini].ficha.getFicha() == Nombrefichas::PEON)
+	if (Tablero::casilla[filaini][columnaini].ficha->getFicha() == Nombrefichas::PEON)
 		r = 4;
-	if (casilla[filaini][columnaini].ficha.getFicha() == Nombrefichas::REY)
+	if (Tablero::casilla[filaini][columnaini].ficha->getFicha() == Nombrefichas::REY)
 		r = 5;
-	if (casilla[filaini][columnaini].ficha.getFicha() == Nombrefichas::REINA)
+	if (Tablero::casilla[filaini][columnaini].ficha->getFicha() == Nombrefichas::REINA)
 		r = 6;
 
 	switch (r) {
 	case 1:
 		if (alfil.restricciones(filafin, columnafin, filaini, columnaini)) {
-			ocupar(filafin, columnafin, Nombrefichas::ALFIL, casilla[filaini][columnaini].fcolor);
+			ocupar(filafin, columnafin, Nombrefichas::ALFIL, Tablero::casilla[filaini][columnaini].fcolor);
 			vaciar(filaini, columnaini);
 		}
 		else
@@ -827,7 +828,7 @@ void juego::movimiento() {
 		break;
 	case 2:
 		if (torre.restricciones(filafin, columnafin, filaini, columnaini)) {
-			ocupar(filafin, columnafin, Nombrefichas::TORRE, casilla[filaini][columnaini].fcolor);
+			ocupar(filafin, columnafin, Nombrefichas::TORRE, Tablero::casilla[filaini][columnaini].fcolor);
 			vaciar(filaini, columnaini);
 		}
 		else
@@ -835,7 +836,7 @@ void juego::movimiento() {
 		break;
 	case 3:
 		if (caballo.restricciones(filafin, columnafin, filaini, columnaini)) {
-			ocupar(filafin, columnafin, Nombrefichas::CABALLO, casilla[filaini][columnaini].fcolor);
+			ocupar(filafin, columnafin, Nombrefichas::CABALLO, Tablero::casilla[filaini][columnaini].fcolor);
 			vaciar(filaini, columnaini);
 		}
 		else
@@ -843,7 +844,7 @@ void juego::movimiento() {
 		break;
 	case 4:
 		if (peon.restricciones(filafin, columnafin, filaini, columnaini)) {
-			ocupar(filafin, columnafin, Nombrefichas::PEON, casilla[filaini][columnaini].fcolor);
+			ocupar(filafin, columnafin, Nombrefichas::PEON, Tablero::casilla[filaini][columnaini].fcolor);
 			vaciar(filaini, columnaini);
 		}
 		else
@@ -851,7 +852,7 @@ void juego::movimiento() {
 		break;
 	case 5:
 		if (rey.restricciones(filafin, columnafin, filaini, columnaini)) {
-			ocupar(filafin, columnafin, Nombrefichas::REY, casilla[filaini][columnaini].fcolor);
+			ocupar(filafin, columnafin, Nombrefichas::REY, Tablero::casilla[filaini][columnaini].fcolor);
 			vaciar(filaini, columnaini);
 		}
 		else
@@ -859,7 +860,7 @@ void juego::movimiento() {
 		break;
 	case 6:
 		if (reina.restricciones(filafin, columnafin, filaini, columnaini)) {
-			ocupar(filafin, columnafin, Nombrefichas::REINA, casilla[filaini][columnaini].fcolor);
+			ocupar(filafin, columnafin, Nombrefichas::REINA, Tablero::casilla[filaini][columnaini].fcolor);
 			vaciar(filaini, columnaini);
 		}
 		else
@@ -882,17 +883,17 @@ void juego::casillero() {
 
 	while (n < 65) {
 
-		//la i es la fila y la j la columna: casilla[fila][columna]
-		casilla[i][j].f = i;
-		casilla[i][j].c = j;
-		casilla[i][j].numero = n;
+		//la i es la fila y la j la columna: Tablero::casilla[fila][columna]
+		Tablero::casilla[i][j].f = i;
+		Tablero::casilla[i][j].c = j;
+		Tablero::casilla[i][j].numero = n;
 
-		if (i % 2 == j % 2) casilla[i][j].color = 'b';
-		else casilla[i][j].color = 'w';
+		if (i % 2 == j % 2) Tablero::casilla[i][j].color = 'b';
+		else Tablero::casilla[i][j].color = 'w';
 
 
-		casilla[i][j].centrox = 1 + i;
-		casilla[i][j].centroy = 1 + j;
+		Tablero::casilla[i][j].centrox = 1 + i;
+		Tablero::casilla[i][j].centroy = 1 + j;
 
 
 
@@ -910,26 +911,26 @@ void juego::casillero() {
 
 void juego::ocupar(int fila, int columna, Nombrefichas pieza, char colorficha) {
 
-	casilla[fila][columna].estado = 1;
-	casilla[fila][columna].fcolor = colorficha;
-	casilla[fila][columna].ficha.setFicha(pieza);
-	casilla[fila][columna].ficha.setPos(fila, columna);
-	casilla[fila][columna].ficha.Color = colorficha;
+	Tablero::casilla[fila][columna].estado = 1;
+	Tablero::casilla[fila][columna].fcolor = colorficha;
+	Tablero::casilla[fila][columna].ficha->setFicha(pieza);
+	Tablero::casilla[fila][columna].ficha->setPos(fila, columna);
+	Tablero::casilla[fila][columna].ficha->setColor(colorficha);
 
 }
 
 void juego::vaciar(int fila, int columna) {
 
-	casilla[fila][columna].estado = 0;
-	casilla[fila][columna].ficha.setFicha(Nombrefichas::VACIO);
-	casilla[fila][columna].ficha.borrarcontenido();
+	Tablero::casilla[fila][columna].estado = 0;
+	Tablero::casilla[fila][columna].ficha->setFicha(Nombrefichas::VACIO);
+	Tablero::casilla[fila][columna].ficha->borrarcontenido();
 
 }
 
 int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { //comprueba si el rey está en jaque, y si lo está, comprueba si está en jaque mate
 	//datos de prueba, luego serán sustituidos por los equivalentes en la clase tablero
 	int entry = 0;//entrada a switch case
-	Nombrefichas atacante = casilla[yatacante][xatacante].ficha.getFicha();// miramos que tipo de ficha es la que ataca, creo que esto esta mal planteado, habra que tener de input a la funcion la ficha atacante directamente
+	Nombrefichas atacante = Tablero::casilla[yatacante][xatacante].ficha->getFicha();// miramos que tipo de ficha es la que ataca, creo que esto esta mal planteado, habra que tener de input a la funcion la ficha atacante directamente
 	int bandoatacante;
 	if (bando == 1)
 		bandoatacante = 0;
@@ -938,43 +939,43 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 	//primero de todo comprobaremos si la posicion del rey está amenazada
 	//IMPORTANTE: ANTES DE LA FUNCION JAQUE, LA FUNCION CLAVADA TIENE QUE HACER UNA PASADA POR TODAS LAS FICHAS DEL BANDO AL QUE SE HACE JAQUE, PARA QUE LAS CLAVADAS NO PUEDAN COMER NI AMENAZAR
 
-	if ((bando == 1) && (casilla[yrey][xrey].amenazanegra == true) || ((bando == 0) && (casilla[yrey][xrey].amenazablanca == true))) //la posición del rey está amenazada, por tanto es jaque, ahora comprobamos si hay jaque mate, empezando por ver si el rey puede huir
+	if ((bando == 1) && (Tablero::casilla[yrey][xrey].amenazanegra == true) || ((bando == 0) && (Tablero::casilla[yrey][xrey].amenazablanca == true))) //la posición del rey está amenazada, por tanto es jaque, ahora comprobamos si hay jaque mate, empezando por ver si el rey puede huir
 	{
-		if ((((bando == 1) && (casilla[yrey + 1][xrey].amenazanegra == false)) && (casilla[yrey + 1][xrey].bando != bando)) || (((bando == 0) && (casilla[yrey + 1][xrey].amenazablanca == false)) && (casilla[yrey + 1][xrey].bando != bando)))
+		if ((((bando == 1) && (Tablero::casilla[yrey + 1][xrey].amenazanegra == false)) && (Tablero::casilla[yrey + 1][xrey].bando != bando)) || (((bando == 0) && (Tablero::casilla[yrey + 1][xrey].amenazablanca == false)) && (Tablero::casilla[yrey + 1][xrey].bando != bando)))
 			return 1; //1 significa que está en jaque, pero no en jaque mate
-		if ((((bando == 1) && (casilla[yrey - 1][xrey].amenazanegra == false)) && (casilla[yrey - 1][xrey].bando != bando)) || (((bando == 0) && (casilla[yrey - 1][xrey].amenazablanca == false)) && (casilla[yrey - 1][xrey].bando != bando)))
+		if ((((bando == 1) && (Tablero::casilla[yrey - 1][xrey].amenazanegra == false)) && (Tablero::casilla[yrey - 1][xrey].bando != bando)) || (((bando == 0) && (Tablero::casilla[yrey - 1][xrey].amenazablanca == false)) && (Tablero::casilla[yrey - 1][xrey].bando != bando)))
 			return 1;
-		if ((((bando == 1) && (casilla[yrey][xrey + 1].amenazanegra == false)) && (casilla[yrey][xrey + 1].bando != bando)) || (((bando == 0) && (casilla[yrey][xrey + 1].amenazablanca == false)) && (casilla[yrey + 1][xrey].bando != bando)))
+		if ((((bando == 1) && (Tablero::casilla[yrey][xrey + 1].amenazanegra == false)) && (Tablero::casilla[yrey][xrey + 1].bando != bando)) || (((bando == 0) && (Tablero::casilla[yrey][xrey + 1].amenazablanca == false)) && (Tablero::casilla[yrey + 1][xrey].bando != bando)))
 			return 1;
-		if ((((bando == 1) && (casilla[yrey + 1][xrey + 1].amenazanegra == false)) && (casilla[yrey + 1][xrey + 1].bando != bando)) || (((bando == 0) && (casilla[yrey + 1][xrey + 1].amenazablanca == false)) && (casilla[yrey + 1][xrey].bando != bando)))
+		if ((((bando == 1) && (Tablero::casilla[yrey + 1][xrey + 1].amenazanegra == false)) && (Tablero::casilla[yrey + 1][xrey + 1].bando != bando)) || (((bando == 0) && (Tablero::casilla[yrey + 1][xrey + 1].amenazablanca == false)) && (Tablero::casilla[yrey + 1][xrey].bando != bando)))
 			return 1;
-		if ((((bando == 1) && (casilla[yrey - 1][xrey + 1].amenazanegra == false)) && (casilla[yrey - 1][xrey + 1].bando != bando)) || (((bando == 0) && (casilla[yrey - 1][xrey + 1].amenazablanca == false)) && (casilla[yrey + 1][xrey].bando != bando)))
+		if ((((bando == 1) && (Tablero::casilla[yrey - 1][xrey + 1].amenazanegra == false)) && (Tablero::casilla[yrey - 1][xrey + 1].bando != bando)) || (((bando == 0) && (Tablero::casilla[yrey - 1][xrey + 1].amenazablanca == false)) && (Tablero::casilla[yrey + 1][xrey].bando != bando)))
 			return 1;
-		if ((((bando == 1) && (casilla[yrey][xrey - 1].amenazanegra == false)) && (casilla[yrey][xrey - 1].bando != bando)) || (((bando == 0) && (casilla[yrey][xrey - 1].amenazablanca == false)) && (casilla[yrey + 1][xrey].bando != bando)))
+		if ((((bando == 1) && (Tablero::casilla[yrey][xrey - 1].amenazanegra == false)) && (Tablero::casilla[yrey][xrey - 1].bando != bando)) || (((bando == 0) && (Tablero::casilla[yrey][xrey - 1].amenazablanca == false)) && (Tablero::casilla[yrey + 1][xrey].bando != bando)))
 			return 1;
-		if ((((bando == 1) && (casilla[yrey + 1][xrey - 1].amenazanegra == false)) && (casilla[yrey + 1][xrey - 1].bando != bando)) || (((bando == 0) && (casilla[yrey + 1][xrey - 1].amenazablanca == false)) && (casilla[yrey + 1][xrey].bando != bando)))
+		if ((((bando == 1) && (Tablero::casilla[yrey + 1][xrey - 1].amenazanegra == false)) && (Tablero::casilla[yrey + 1][xrey - 1].bando != bando)) || (((bando == 0) && (Tablero::casilla[yrey + 1][xrey - 1].amenazablanca == false)) && (Tablero::casilla[yrey + 1][xrey].bando != bando)))
 			return 1;
-		if ((((bando == 1) && (casilla[yrey - 1][xrey - 1].amenazanegra == false)) && (casilla[yrey - 1][xrey - 1].bando != bando)) || (((bando == 0) && (casilla[yrey + 1][xrey - 1].amenazablanca == false)) && (casilla[yrey + 1][xrey].bando != bando)))
+		if ((((bando == 1) && (Tablero::casilla[yrey - 1][xrey - 1].amenazanegra == false)) && (Tablero::casilla[yrey - 1][xrey - 1].bando != bando)) || (((bando == 0) && (Tablero::casilla[yrey + 1][xrey - 1].amenazablanca == false)) && (Tablero::casilla[yrey + 1][xrey].bando != bando)))
 			return 1;
 		//en caso de que el rey no haya podido huir por ninguna de las posiciones colindantes, comprobamos si se puede eliminar la amenaza
-		if (((bando == 1) && (casilla[yatacante][xatacante].amenazablanca == true)) || (((bando == 0) && (casilla[yatacante][xatacante].amenazanegra == true))))
+		if (((bando == 1) && (Tablero::casilla[yatacante][xatacante].amenazablanca == true)) || (((bando == 0) && (Tablero::casilla[yatacante][xatacante].amenazanegra == true))))
 			return 1;
 		else
 		{
 			//esto significa que no podemos comernos al atacante, por lo que la única opción que queda es bloquear su camino, cosa que solo se puede si es una Reina, una Torre o un Alfil
-			if (casilla[yatacante][xatacante].ficha.getFicha() == Nombrefichas::PEON)
+			if (Tablero::casilla[yatacante][xatacante].ficha->getFicha() == Nombrefichas::PEON)
 				entry = 1;
-			if (casilla[yatacante][xatacante].ficha.getFicha() == Nombrefichas::CABALLO)
+			if (Tablero::casilla[yatacante][xatacante].ficha->getFicha() == Nombrefichas::CABALLO)
 				entry = 2;
-			if (casilla[yatacante][xatacante].ficha.getFicha() == Nombrefichas::TORRE)
+			if (Tablero::casilla[yatacante][xatacante].ficha->getFicha() == Nombrefichas::TORRE)
 				entry = 3;
-			if (casilla[yatacante][xatacante].ficha.getFicha() == Nombrefichas::ALFIL)
+			if (Tablero::casilla[yatacante][xatacante].ficha->getFicha() == Nombrefichas::ALFIL)
 				entry = 4;
-			if (casilla[yatacante][xatacante].ficha.getFicha() == Nombrefichas::REINA)
+			if (Tablero::casilla[yatacante][xatacante].ficha->getFicha() == Nombrefichas::REINA)
 				entry = 5;
-			if (casilla[yatacante][xatacante].ficha.getFicha() == Nombrefichas::REY)
+			if (Tablero::casilla[yatacante][xatacante].ficha->getFicha() == Nombrefichas::REY)
 				entry = 6;
-			if (casilla[yatacante][xatacante].ficha.getFicha() == Nombrefichas::VACIO)
+			if (Tablero::casilla[yatacante][xatacante].ficha->getFicha() == Nombrefichas::VACIO)
 				entry = 0;
 			switch (entry/*tablero[yatacante][xatacante].ficha*/) {
 			case 1://peon
@@ -985,34 +986,34 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 			{
 				if (xatacante == xrey) //están en la misma columna
 				{
-					if (yatacante < yrey) //si está debajo del rey, comprobamos las casillas que tiene encima una a una
+					if (yatacante < yrey) //si está debajo del rey, comprobamos las Tablero::casillas que tiene encima una a una
 					{
 						for (int i = 1; (yatacante + i) < yrey; i++)
 						{
 							if (bando == 1)
 							{
-								if (casilla[yatacante + i][xatacante].amenazablanca == true)
+								if (Tablero::casilla[yatacante + i][xatacante].amenazablanca == true)
 									return 1; //se ha podido bloquear alguno de los puntos intermedios
 							}
 							if (bando == 0)
 							{
-								if (casilla[yatacante + i][xatacante].amenazanegra == true)
+								if (Tablero::casilla[yatacante + i][xatacante].amenazanegra == true)
 									return 1;
 							}
 						}
 					}
-					if (yatacante > yrey)  //si está encima del rey, comprobamos las casillas que tiene debajo una a una
+					if (yatacante > yrey)  //si está encima del rey, comprobamos las Tablero::casillas que tiene debajo una a una
 					{
 						for (int i = 1; (yatacante - i) > yrey; i++)
 						{
 							if (bando == 1)
 							{
-								if (casilla[yatacante - i][xatacante].amenazablanca == true)
+								if (Tablero::casilla[yatacante - i][xatacante].amenazablanca == true)
 									return 1; //se ha podido bloquear alguno de los puntos intermedios
 							}
 							if (bando == 0)
 							{
-								if (casilla[yatacante - i][xatacante].amenazanegra == true)
+								if (Tablero::casilla[yatacante - i][xatacante].amenazanegra == true)
 									return 1;
 							}
 						}
@@ -1022,34 +1023,34 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 
 				if (yatacante == yrey) //están en la misma columna
 				{
-					if (xatacante < xrey) //si está a la izquierda del rey, comprobamos las casillas en el camino una a una
+					if (xatacante < xrey) //si está a la izquierda del rey, comprobamos las Tablero::casillas en el camino una a una
 					{
 						for (int i = 1; (xatacante + i) < xrey; i++)
 						{
 							if (bando == 1)
 							{
-								if (casilla[yatacante][xatacante + i].amenazablanca == true)
+								if (Tablero::casilla[yatacante][xatacante + i].amenazablanca == true)
 									return 1; //se ha podido bloquear alguno de los puntos intermedios
 							}
 							if (bando == 0)
 							{
-								if (casilla[yatacante][xatacante + i].amenazanegra == true)
+								if (Tablero::casilla[yatacante][xatacante + i].amenazanegra == true)
 									return 1;
 							}
 						}
 					}
-					if (xatacante > xrey) //si está a la derecha del rey, comprobamos las casillas en el camino una a una
+					if (xatacante > xrey) //si está a la derecha del rey, comprobamos las Tablero::casillas en el camino una a una
 					{
 						for (int i = 1; (xatacante - i) < xrey; i++)
 						{
 							if (bando == 1)
 							{
-								if (casilla[yatacante][xatacante - i].amenazablanca == true)
+								if (Tablero::casilla[yatacante][xatacante - i].amenazablanca == true)
 									return 1; //se ha podido bloquear alguno de los puntos intermedios
 							}
 							if (bando == 0)
 							{
-								if (casilla[yatacante][xatacante - i].amenazanegra == true)
+								if (Tablero::casilla[yatacante][xatacante - i].amenazanegra == true)
 									return 1;
 							}
 						}
@@ -1065,12 +1066,12 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 					{
 						if (bando == 1)
 						{
-							if (casilla[yatacante + i][xatacante + i].amenazablanca == true)
+							if (Tablero::casilla[yatacante + i][xatacante + i].amenazablanca == true)
 								return 1; //se ha podido bloquear alguno de los puntos intermedios
 						}
 						if (bando == 0)
 						{
-							if (casilla[yatacante + i][xatacante + i].amenazanegra == true)
+							if (Tablero::casilla[yatacante + i][xatacante + i].amenazanegra == true)
 								return 1;
 						}
 					}
@@ -1081,12 +1082,12 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 					{
 						if (bando == 1)
 						{
-							if (casilla[yatacante + i][xatacante - i].amenazablanca == true)
+							if (Tablero::casilla[yatacante + i][xatacante - i].amenazablanca == true)
 								return 1; //se ha podido bloquear alguno de los puntos intermedios
 						}
 						if (bando == 0)
 						{
-							if (casilla[yatacante + i][xatacante - i].amenazanegra == true)
+							if (Tablero::casilla[yatacante + i][xatacante - i].amenazanegra == true)
 								return 1;
 						}
 					}
@@ -1097,12 +1098,12 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 					{
 						if (bando == 1)
 						{
-							if (casilla[yatacante - i][xatacante + i].amenazablanca == true)
+							if (Tablero::casilla[yatacante - i][xatacante + i].amenazablanca == true)
 								return 1; //se ha podido bloquear alguno de los puntos intermedios
 						}
 						if (bando == 0)
 						{
-							if (casilla[yatacante - i][xatacante + i].amenazanegra == true)
+							if (Tablero::casilla[yatacante - i][xatacante + i].amenazanegra == true)
 								return 1;
 						}
 					}
@@ -1113,12 +1114,12 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 					{
 						if (bando == 1)
 						{
-							if (casilla[yatacante - i][xatacante - i].amenazablanca == true)
+							if (Tablero::casilla[yatacante - i][xatacante - i].amenazablanca == true)
 								return 1; //se ha podido bloquear alguno de los puntos intermedios
 						}
 						if (bando == 0)
 						{
-							if (casilla[yatacante - i][xatacante - i].amenazanegra == true)
+							if (Tablero::casilla[yatacante - i][xatacante - i].amenazanegra == true)
 								return 1;
 						}
 					}
@@ -1129,34 +1130,34 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 			{
 				if (xatacante == xrey) //están en la misma columna
 				{
-					if (yatacante < yrey) //si está debajo del rey, comprobamos las casillas que tiene encima una a una
+					if (yatacante < yrey) //si está debajo del rey, comprobamos las Tablero::casillas que tiene encima una a una
 					{
 						for (int i = 1; (yatacante + i) < yrey; i++)
 						{
 							if (bando == 1)
 							{
-								if (casilla[yatacante + i][xatacante].amenazablanca == true)
+								if (Tablero::casilla[yatacante + i][xatacante].amenazablanca == true)
 									return 1; //se ha podido bloquear alguno de los puntos intermedios
 							}
 							if (bando == 0)
 							{
-								if (casilla[yatacante + i][xatacante].amenazanegra == true)
+								if (Tablero::casilla[yatacante + i][xatacante].amenazanegra == true)
 									return 1;
 							}
 						}
 					}
-					if (yatacante > yrey)  //si está encima del rey, comprobamos las casillas que tiene debajo una a una
+					if (yatacante > yrey)  //si está encima del rey, comprobamos las Tablero::casillas que tiene debajo una a una
 					{
 						for (int i = 1; (yatacante - i) > yrey; i++)
 						{
 							if (bando == 1)
 							{
-								if (casilla[yatacante - i][xatacante].amenazablanca == true)
+								if (Tablero::casilla[yatacante - i][xatacante].amenazablanca == true)
 									return 1; //se ha podido bloquear alguno de los puntos intermedios
 							}
 							if (bando == 0)
 							{
-								if (casilla[yatacante - i][xatacante].amenazanegra == true)
+								if (Tablero::casilla[yatacante - i][xatacante].amenazanegra == true)
 									return 1;
 							}
 						}
@@ -1166,34 +1167,34 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 
 				if (yatacante == yrey) //están en la misma columna
 				{
-					if (xatacante < xrey) //si está a la izquierda del rey, comprobamos las casillas en el camino una a una
+					if (xatacante < xrey) //si está a la izquierda del rey, comprobamos las Tablero::casillas en el camino una a una
 					{
 						for (int i = 1; (xatacante + i) < xrey; i++)
 						{
 							if (bando == 1)
 							{
-								if (casilla[yatacante][xatacante + i].amenazablanca == true)
+								if (Tablero::casilla[yatacante][xatacante + i].amenazablanca == true)
 									return 1; //se ha podido bloquear alguno de los puntos intermedios
 							}
 							if (bando == 0)
 							{
-								if (casilla[yatacante][xatacante + i].amenazanegra == true)
+								if (Tablero::casilla[yatacante][xatacante + i].amenazanegra == true)
 									return 1;
 							}
 						}
 					}
-					if (xatacante > xrey) //si está a la derecha del rey, comprobamos las casillas en el camino una a una
+					if (xatacante > xrey) //si está a la derecha del rey, comprobamos las Tablero::casillas en el camino una a una
 					{
 						for (int i = 1; (xatacante - i) < xrey; i++)
 						{
 							if (bando == 1)
 							{
-								if (casilla[yatacante][xatacante - i].amenazablanca == true)
+								if (Tablero::casilla[yatacante][xatacante - i].amenazablanca == true)
 									return 1; //se ha podido bloquear alguno de los puntos intermedios
 							}
 							if (bando == 0)
 							{
-								if (casilla[yatacante][xatacante - i].amenazanegra == true)
+								if (Tablero::casilla[yatacante][xatacante - i].amenazanegra == true)
 									return 1;
 							}
 						}
@@ -1206,12 +1207,12 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 					{
 						if (bando == 1)
 						{
-							if (casilla[yatacante + i][xatacante + i].amenazablanca == true)
+							if (Tablero::casilla[yatacante + i][xatacante + i].amenazablanca == true)
 								return 1; //se ha podido bloquear alguno de los puntos intermedios
 						}
 						if (bando == 0)
 						{
-							if (casilla[yatacante + i][xatacante + i].amenazanegra == true)
+							if (Tablero::casilla[yatacante + i][xatacante + i].amenazanegra == true)
 								return 1;
 						}
 					}
@@ -1222,12 +1223,12 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 					{
 						if (bando == 1)
 						{
-							if (casilla[yatacante + i][xatacante - i].amenazablanca == true)
+							if (Tablero::casilla[yatacante + i][xatacante - i].amenazablanca == true)
 								return 1; //se ha podido bloquear alguno de los puntos intermedios
 						}
 						if (bando == 0)
 						{
-							if (casilla[yatacante + i][xatacante - i].amenazanegra == true)
+							if (Tablero::casilla[yatacante + i][xatacante - i].amenazanegra == true)
 								return 1;
 						}
 					}
@@ -1238,12 +1239,12 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 					{
 						if (bando == 1)
 						{
-							if (casilla[yatacante - i][xatacante + i].amenazablanca == true)
+							if (Tablero::casilla[yatacante - i][xatacante + i].amenazablanca == true)
 								return 1; //se ha podido bloquear alguno de los puntos intermedios
 						}
 						if (bando == 0)
 						{
-							if (casilla[yatacante - i][xatacante + i].amenazanegra == true)
+							if (Tablero::casilla[yatacante - i][xatacante + i].amenazanegra == true)
 								return 1;
 						}
 					}
@@ -1254,12 +1255,12 @@ int juego::jaque(int xatacante, int yatacante, int bando, int xrey, int yrey) { 
 					{
 						if (bando == 1)
 						{
-							if (casilla[yatacante - i][xatacante - i].amenazablanca == true)
+							if (Tablero::casilla[yatacante - i][xatacante - i].amenazablanca == true)
 								return 1; //se ha podido bloquear alguno de los puntos intermedios
 						}
 						if (bando == 0)
 						{
-							if (casilla[yatacante - i][xatacante - i].amenazanegra == true)
+							if (Tablero::casilla[yatacante - i][xatacante - i].amenazanegra == true)
 								return 1;
 						}
 					}

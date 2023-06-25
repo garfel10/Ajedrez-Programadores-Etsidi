@@ -4,11 +4,11 @@
 Reina::Reina(){}
 
 void Reina::dibujar(int fila, int columna) {
-	if (casilla[fila][columna].fcolor == 'w') {
-		imagen = new Sprite("bin/imagenes/Reina Blanco", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
+	if (Tablero::casilla[fila][columna].fcolor == 'w') {
+		imagen = new Sprite("bin/imagenes/Reina Blanco", Tablero::casilla[fila][columna].centrox, Tablero::casilla[fila][columna].centroy, 1, 1);
 	}
-	if (casilla[fila][columna].fcolor == 'b') {
-		imagen = new Sprite("bin/imagenes/Reina Negro", casilla[fila][columna].centrox, casilla[fila][columna].centroy, 1, 1);
+	if (Tablero::casilla[fila][columna].fcolor == 'b') {
+		imagen = new Sprite("bin/imagenes/Reina Negro", Tablero::casilla[fila][columna].centrox, Tablero::casilla[fila][columna].centroy, 1, 1);
 	}
 }
 

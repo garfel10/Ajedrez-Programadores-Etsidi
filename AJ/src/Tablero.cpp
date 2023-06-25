@@ -38,7 +38,7 @@ void Tablero::dibuja(){
     }
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            switch (casilla[i][j].ficha.getFicha()) {
+            switch (Tablero::casilla[i][j].ficha->getFicha()) {
 			case Nombrefichas::ALFIL:
 				alfil.dibujar(i,j);
 				break;
